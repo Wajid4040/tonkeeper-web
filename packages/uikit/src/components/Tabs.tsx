@@ -13,6 +13,7 @@ const TabsBlock = styled.div`
     background: ${props => props.theme.backgroundContent};
 `;
 
+
 export function Tabs<T extends string>({
     active,
     values,

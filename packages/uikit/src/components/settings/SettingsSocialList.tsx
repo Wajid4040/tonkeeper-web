@@ -21,21 +21,8 @@ export const SettingsSocialList: FC = React.memo(() => {
                 icon: <TelegramIcon />,
                 action: () => config.directSupportUrl && sdk.openPage(config.directSupportUrl)
             },
-            {
-                name: t('settings_news'),
-                icon: <TelegramIcon />,
-                action: () => config.tonkeeperNewsUrl && sdk.openPage(config.tonkeeperNewsUrl)
-            },
-            {
-                name: t('settings_contact_support'),
-                icon: <ContactSupportIcon />,
-                action: () => config.supportLink && sdk.openPage(config.supportLink)
-            },
-            {
-                name: t('settings_legal_documents'),
-                icon: <LegalDocumentsIcon />,
-                action: () => navigate(relative(SettingsRoute.legal))
-            }
+            
+           
         ]);
     }, [t, navigate, sdk.openPage]);
 

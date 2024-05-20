@@ -31,13 +31,7 @@ export const ThemeSettings = () => {
             action: () => navigate(relative(SettingsRoute.fiat))
         });
 
-        if (i18n.enable) {
-            items.push({
-                name: t('Localization'),
-                icon: <MessageIcon />,
-                action: () => navigate(relative(SettingsRoute.localization))
-            });
-        }
+      
 
         items.push({
             name: t('country'),
@@ -46,16 +40,7 @@ export const ThemeSettings = () => {
         });
 
         // TODO: REMOVE:
-        items.push({
-            name: i18n.language === 'ru' ? 'Обновление адреса' : 'Address Update',
-            icon: 'EQ » UQ',
-            action: () =>
-                sdk.openPage(
-                    i18n.language === 'ru'
-                        ? 'https://t.me/tonkeeper_ru/65'
-                        : 'https://t.me/tonkeeper_news/49'
-                )
-        });
+       
         return items;
     }, [t, i18n.enable, navigate, fiat]);
 

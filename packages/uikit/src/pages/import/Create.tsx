@@ -17,6 +17,7 @@ import { useTranslation } from '../../hooks/translation';
 import { useActiveWallet } from '../../state/wallet';
 import { FinalView, useAddWalletMutation } from './Password';
 import { Subscribe } from './Subscribe';
+import { CheckmarkCircleIcon } from '../../components/Icon';
 
 const Create: FC<{ listOfAuth: AuthState['kind'][] }> = ({ listOfAuth }) => {
     const sdk = useAppSdk();
@@ -53,7 +54,7 @@ const Create: FC<{ listOfAuth: AuthState['kind'][] }> = ({ listOfAuth }) => {
     }, [mnemonic]);
 
     if (mnemonic.length === 0) {
-        return <IconPage icon={<GearLottieIcon />} title={t('create_wallet_generating')} />;
+        return <IconPage icon={<CheckmarkCircleIcon />} title={t('create_wallet_generating')} />;
     }
 
     if (!create) {

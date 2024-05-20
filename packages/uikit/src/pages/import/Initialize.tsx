@@ -1,7 +1,6 @@
 import { FC, PropsWithChildren, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { CenterContainer } from '../../components/Layout';
-import { H1 } from '../../components/Text';
 import { RocketIcon, ShieldIcon } from '../../components/create/CreateIcon';
 import { Description } from '../../components/create/Description';
 import { ImportNotification } from '../../components/create/ImportNotification';
@@ -45,13 +44,16 @@ export const InitializeContainer: FC<
     );
 };
 
-const Accent = styled.span`
-    color: ${props => props.theme.accentBlue};
+const LogoContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
 `;
 
-const Title = styled(H1)`
-    margin-bottom: 2rem;
-    user-select: none;
+const Logo = styled.img`
+    width: 300px; // Increased size
+    height: auto;
 `;
 
 const Initialize: FC = () => {
@@ -65,10 +67,9 @@ const Initialize: FC = () => {
 
     return (
         <CenterContainer>
-            <Title>
-                {t('intro_title')}
-                <Accent>Tonkeeper</Accent>
-            </Title>
+            <LogoContainer>
+                <Logo src="https://i.ibb.co/CwTPbzc/IMG-7415.png" alt="Logo" />
+            </LogoContainer>
             <div>
                 <Description
                     icon={<RocketIcon />}

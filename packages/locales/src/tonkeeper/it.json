@@ -183,7 +183,7 @@
   "exchange_title" : "Compra TON",
   "form_optional_indicator" : "Facoltativo",
   "import_wallet_caption" : "Per ripristinare l'accesso al tuo wallet, inserisci le 24 parole di recupero segrete che ti sono state fornite quando hai creato il tuo wallet.",
-  "import_wallet_reset_caption" : "Ripristina l'accesso al tuo wallet  immettendo 24 parole segrete che hai annotato e creando il wallet.",
+  "import_wallet_reset_caption" : "Ripristina l'accesso al tuo wallet immettendo 24 parole segrete che hai annotato e creando il wallet.",
   "import_wallet_title" : "Inserisci la tua\frase di recupero",
   "import_wallet_wrong_words_err" : "Frase errata",
   "info_about_inactive_back" : "Indietro",
@@ -196,7 +196,7 @@
   "intro_continue_btn" : "Iniziamo",
   "intro_item1_caption" : "Grazie all'architettura unica di The Open Network, le transazioni TON vengono eseguite in pochi secondi.",
   "intro_item1_title" : "Velocità di prima classe",
-  "intro_item2_caption" : "Tonkeeper memorizza le tue chiavi crittografiche sul tuo dispositivo. Tutte le operazioni vengono eseguite tramite protocolli decentralizzati in modo che le tue criptovalute non finiscano mai nelle mani di exchange centralizzati.",
+  "intro_item2_caption" : "Megapayer memorizza le tue chiavi crittografiche sul tuo dispositivo. Tutte le operazioni vengono eseguite tramite protocolli decentralizzati in modo che le tue criptovalute non finiscano mai nelle mani di exchange centralizzati.",
   "intro_item2_title" : "Sicurezza End-to-End",
   "intro_item3_caption" : "-",
   "intro_item3_title" : "-",

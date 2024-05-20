@@ -82,7 +82,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
     min-width: 300px;
-    max-width: 550px;
+    max-width: 480px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;

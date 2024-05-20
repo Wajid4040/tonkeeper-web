@@ -1,87 +1,81 @@
 import { DefaultTheme } from 'styled-components';
 
 export const defaultTheme: DefaultTheme = {
-    textPrimary: '#EBEBEB',
-    textSecondary: '#8994A3',
-    textTertiary: '#556170',
-    textAccent: '#45AEF5',
-    textPrimaryAlternate: '#10161F',
+    textPrimary: '#000000', // Black text
+    textSecondary: '#4D4D4D', // Dark grey text for secondary elements
+    textTertiary: '#808080', // Grey text for tertiary elements
+    textAccent: '#000000', // Black accent text
+    textPrimaryAlternate: '#FFFFFF', // White alternate text
 
-    backgroundPage: '#10161F',
-    backgroundTransparent: 'rgba(16, 22, 31, 0.92)',
-    backgroundContent: '#1D2633',
-    backgroundContentTint: '#2E3847',
-    backgroundContentAttention: '#424C5C',
-    backgroundOverlayStrong: 'rgba(0, 0, 0, 0.72)',
-    backgroundOverlayLight: 'rgba(0, 0, 0, 0.48)',
-    backgroundOverlayExtraLight: 'rgba(0, 0, 0, 0.24)',
-    backgroundHighlighted: 'rgba(79, 90, 112, 0.24)',
+    backgroundPage: '#FFFFFF', // White page background
+    backgroundTransparent: 'rgba(255, 255, 255, 0.92)', // Transparent white background
+    backgroundContent: '#F0F0F0', // Light grey content background
+    backgroundContentTint: '#E0E0E0', // Slightly darker grey for content tint
+    backgroundContentAttention: '#CCCCCC', // Attention-grabbing grey background
+    backgroundOverlayStrong: 'rgba(255, 255, 255, 0.72)', // Strong white overlay
+    backgroundOverlayLight: 'rgba(255, 255, 255, 0.48)', // Light white overlay
+    backgroundOverlayExtraLight: 'rgba(255, 255, 255, 0.24)', // Extra light white overlay
+    backgroundHighlighted: 'rgba(0, 0, 0, 0.24)', // Highlighted background in black
 
-    iconPrimary: '#EBEBEB',
-    iconSecondary: '#8994A3',
-    iconTertiary: '#556170',
-    iconPrimaryAlternate: '#10161F',
+    iconPrimary: '#000000', // Black primary icons
+    iconSecondary: '#4D4D4D', // Dark grey secondary icons
+    iconTertiary: '#808080', // Grey tertiary icons
+    iconPrimaryAlternate: '#FFFFFF', // White alternate icons
 
-    buttonPrimaryBackground: '#45AEF5',
-    buttonPrimaryForeground: '#FFFFFF',
-    buttonSecondaryBackground: '#1D2633',
-    buttonSecondaryForeground: '#EBEBEB',
-    buttonTertiaryBackground: '#2E3847',
-    buttonTertiaryForeground: '#EBEBEB',
-    buttonPrimaryBackgroundDisabled: '#378AC2',
-    buttonSecondaryBackgroundDisabled: '#171F29',
-    buttonTertiaryBackgroundDisabled: '#28303D',
+    buttonPrimaryBackground: '#000000', // Black primary button background
+    buttonPrimaryForeground: '#FFFFFF', // White primary button text
+    buttonSecondaryBackground: '#F0F0F0', // Light grey secondary button background
+    buttonSecondaryForeground: '#000000', // Black secondary button text
+    buttonTertiaryBackground: '#E0E0E0', // Darker grey tertiary button background
+    buttonTertiaryForeground: '#000000', // Black tertiary button text
+    buttonPrimaryBackgroundDisabled: '#999999', // Disabled state for primary button
+    buttonSecondaryBackgroundDisabled: '#CCCCCC', // Disabled state for secondary button
+    buttonTertiaryBackgroundDisabled: '#E0E0E0', // Disabled state for tertiary button
 
-    buttonTertiaryForegroundDisabled: 'rgba(256, 256, 256, 0.48)',
-    buttonSecondaryForegroundDisabled: 'rgba(256, 256, 256, 0.48)',
-    buttonPrimaryForegroundDisabled: 'rgba(256, 256, 256, 0.48)',
+    buttonTertiaryForegroundDisabled: 'rgba(0, 0, 0, 0.48)', // Disabled state text in black
+    buttonSecondaryForegroundDisabled: 'rgba(0, 0, 0, 0.48)', // Disabled state text in black
+    buttonPrimaryForegroundDisabled: 'rgba(0, 0, 0, 0.48)', // Disabled state text in black
 
-    buttonPrimaryBackgroundHighlighted: 'rgba(91, 184, 246, 1)',
-    buttonSecondaryBackgroundHighlighted: 'rgba(34, 44, 59, 1)',
-    buttonTertiaryBackgroundHighlighted: 'rgba(54, 64, 82, 1)',
+    buttonPrimaryBackgroundHighlighted: 'rgba(0, 0, 0, 0.24)', // Highlighted primary button background
+    buttonSecondaryBackgroundHighlighted: 'rgba(0, 0, 0, 0.24)', // Highlighted secondary button background
+    buttonTertiaryBackgroundHighlighted: 'rgba(0, 0, 0, 0.24)', // Highlighted tertiary button background
 
-    fieldBackground: '#1D2633',
-    fieldActiveBorder: '#45AEF5',
-    fieldErrorBorder: '#FF4766',
-    fieldErrorBackground: 'rgba(255, 71, 102, 0.08)',
+    fieldBackground: '#F0F0F0', // Light grey field background
+    fieldActiveBorder: '#000000', // Black active border
+    fieldErrorBorder: '#FF0000', // Red error border
+    fieldErrorBackground: 'rgba(255, 0, 0, 0.08)', // Light red error background
 
-    accentBlue: '#45AEF5',
-    accentGreen: '#39CC83',
-    accentRed: '#FF4766',
-    accentOrange: '#F5A73B',
-    accentPurple: '#7665E5',
+    accentBlue: '#000000', // Black accent color for blue
+    accentGreen: '#000000', // Black accent color for green
+    accentRed: '#000000', // Black accent color for red
+    accentOrange: '#000000', // Black accent color for orange
+    accentPurple: '#000000', // Black accent color for purple
 
-    tabBarActiveIcon: '#45AEF5',
-    tabBarInactiveIcon: '#8994A3',
+    tabBarActiveIcon: '#000000', // Black active tab icon
+    tabBarInactiveIcon: '#4D4D4D', // Dark grey inactive tab icon
 
-    separatorCommon: 'rgba(79, 90, 112, 0.24)',
-    separatorAlternate: 'rgba(255, 255, 255, 0.04)',
+    separatorCommon: 'rgba(0, 0, 0, 0.24)', // Common separator in black
+    separatorAlternate: 'rgba(0, 0, 0, 0.04)', // Alternate separator in black
 
-    gradientBackgroundTop:
-        'linear-gradient(180deg, #10161F 0%, rgba(16, 22, 31, 0.991353) 6.67%, rgba(16, 22, 31, 0.96449) 13.33%, rgba(16, 22, 31, 0.91834) 20%, rgba(16, 22, 31, 0.852589) 26.67%, rgba(16, 22, 31, 0.768225) 33.33%, rgba(16, 22, 31, 0.668116) 40%, rgba(16, 22, 31, 0.557309) 46.67%, rgba(16, 22, 31, 0.442691) 53.33%, rgba(16, 22, 31, 0.331884) 60%, rgba(16, 22, 31, 0.231775) 66.67%, rgba(16, 22, 31, 0.147411) 73.33%, rgba(16, 22, 31, 0.0816599) 80%, rgba(16, 22, 31, 0.03551) 86.67%, rgba(16, 22, 31, 0.0086472) 93.33%, rgba(16, 22, 31, 0) 100%)',
-    gradientBackgroundBottom:
-        'linear-gradient(360deg, #10161F 0%, rgba(16, 22, 31, 0.991353) 6.67%, rgba(16, 22, 31, 0.96449) 13.33%, rgba(16, 22, 31, 0.91834) 20%, rgba(16, 22, 31, 0.852589) 26.67%, rgba(16, 22, 31, 0.768225) 33.33%, rgba(16, 22, 31, 0.668116) 40%, rgba(16, 22, 31, 0.557309) 46.67%, rgba(16, 22, 31, 0.442691) 53.33%, rgba(16, 22, 31, 0.331884) 60%, rgba(16, 22, 31, 0.231775) 66.67%, rgba(16, 22, 31, 0.147411) 73.33%, rgba(16, 22, 31, 0.0816599) 80%, rgba(16, 22, 31, 0.03551) 86.67%, rgba(16, 22, 31, 0.0086472) 93.33%, rgba(16, 22, 31, 0) 100%)',
-    gradientBlueTop:
-        'linear-gradient(180deg, #45AEF5 0%, rgba(69, 174, 245, 0.991353) 6.67%, rgba(69, 174, 245, 0.96449) 13.33%, rgba(69, 174, 245, 0.91834) 20%, rgba(69, 174, 245, 0.852589) 26.67%, rgba(69, 174, 245, 0.768225) 33.33%, rgba(69, 174, 245, 0.668116) 40%, rgba(69, 174, 245, 0.557309) 46.67%, rgba(69, 174, 245, 0.442691) 53.33%, rgba(69, 174, 245, 0.331884) 60%, rgba(69, 174, 245, 0.231775) 66.67%, rgba(69, 174, 245, 0.147411) 73.33%, rgba(69, 174, 245, 0.0816599) 80%, rgba(69, 174, 245, 0.03551) 86.67%, rgba(69, 174, 245, 0.0086472) 93.33%, rgba(69, 174, 245, 0) 100%)',
-    gradientBlueBottom:
-        'linear-gradient(0deg, #45AEF5 0%, rgba(69, 174, 245, 0.991353) 6.67%, rgba(69, 174, 245, 0.96449) 13.33%, rgba(69, 174, 245, 0.91834) 20%, rgba(69, 174, 245, 0.852589) 26.67%, rgba(69, 174, 245, 0.768225) 33.33%, rgba(69, 174, 245, 0.668116) 40%, rgba(69, 174, 245, 0.557309) 46.67%, rgba(69, 174, 245, 0.442691) 53.33%, rgba(69, 174, 245, 0.331884) 60%, rgba(69, 174, 245, 0.231775) 66.67%, rgba(69, 174, 245, 0.147411) 73.33%, rgba(69, 174, 245, 0.0816599) 80%, rgba(69, 174, 245, 0.03551) 86.67%, rgba(69, 174, 245, 0.0086472) 93.33%, rgba(69, 174, 245, 0) 100%)',
-    gradientGreen:
-        'linear-gradient(180deg, #39CC83 0%, rgba(57, 204, 131, 0.991353) 6.67%, rgba(57, 204, 131, 0.96449) 13.33%, rgba(57, 204, 131, 0.91834) 20%, rgba(57, 204, 131, 0.852589) 26.67%, rgba(57, 204, 131, 0.768225) 33.33%, rgba(57, 204, 131, 0.668116) 40%, rgba(57, 204, 131, 0.557309) 46.67%, rgba(57, 204, 131, 0.442691) 53.33%, rgba(57, 204, 131, 0.331884) 60%, rgba(57, 204, 131, 0.231775) 66.67%, rgba(57, 204, 131, 0.147411) 73.33%, rgba(57, 204, 131, 0.0816599) 80%, rgba(57, 204, 131, 0.03551) 86.67%, rgba(57, 204, 131, 0.0086472) 93.33%, rgba(57, 204, 131, 0) 100%)',
-    gradientRed:
-        'linear-gradient(180deg, #FF4766 0%, rgba(255, 71, 102, 0.991353) 6.67%, rgba(255, 71, 102, 0.96449) 13.33%, rgba(255, 71, 102, 0.91834) 20%, rgba(255, 71, 102, 0.852589) 26.67%, rgba(255, 71, 102, 0.768225) 33.33%, rgba(255, 71, 102, 0.668116) 40%, rgba(255, 71, 102, 0.557309) 46.67%, rgba(255, 71, 102, 0.442691) 53.33%, rgba(255, 71, 102, 0.331884) 60%, rgba(255, 71, 102, 0.231775) 66.67%, rgba(255, 71, 102, 0.147411) 73.33%, rgba(255, 71, 102, 0.0816599) 80%, rgba(255, 71, 102, 0.03551) 86.67%, rgba(255, 71, 102, 0.0086472) 93.33%, rgba(255, 71, 102, 0) 100%)',
+    gradientBackgroundTop: 'linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.991353) 6.67%, rgba(255, 255, 255, 0.96449) 13.33%, rgba(255, 255, 255, 0.91834) 20%, rgba(255, 255, 255, 0.852589) 26.67%, rgba(255, 255, 255, 0.768225) 33.33%, rgba(255, 255, 255, 0.668116) 40%, rgba(255, 255, 255, 0.557309) 46.67%, rgba(255, 255, 255, 0.442691) 53.33%, rgba(255, 255, 255, 0.331884) 60%, rgba(255, 255, 255, 0.231775) 66.67%, rgba(255, 255, 255, 0.147411) 73.33%, rgba(255, 255, 255, 0.0816599) 80%, rgba(255, 255, 255, 0.03551) 86.67%, rgba(255, 255, 255, 0.0086472) 93.33%, rgba(255, 255, 255, 0) 100%)',
+    gradientBackgroundBottom: 'linear-gradient(360deg, #FFFFFF 0%, rgba(255, 255, 255, 0.991353) 6.67%, rgba(255, 255, 255, 0.96449) 13.33%, rgba(255, 255, 255, 0.91834) 20%, rgba(255, 255, 255, 0.852589) 26.67%, rgba(255, 255, 255, 0.768225) 33.33%, rgba(255, 255, 255, 0.668116) 40%, rgba(255, 255, 255, 0.557309) 46.67%, rgba(255, 255, 255, 0.442691) 53.33%, rgba(255, 255, 255, 0.331884) 60%, rgba(255, 255, 255, 0.231775) 66.67%, rgba(255, 255, 255, 0.147411) 73.33%, rgba(255, 255, 255, 0.0816599) 80%, rgba(255, 255, 255, 0.03551) 86.67%, rgba(255, 255, 255, 0.0086472) 93.33%, rgba(255, 255, 255, 0) 100%)',
+    gradientBlueTop: 'linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.991353) 6.67%, rgba(0, 0, 0, 0.96449) 13.33%, rgba(0, 0, 0, 0.91834) 20%, rgba(0, 0, 0, 0.852589) 26.67%, rgba(0, 0, 0, 0.768225) 33.33%, rgba(0, 0, 0, 0.668116) 40%, rgba(0, 0, 0, 0.557309) 46.67%, rgba(0, 0, 0, 0.442691) 53.33%, rgba(0, 0, 0, 0.331884) 60%, rgba(0, 0, 0, 0.231775) 66.67%, rgba(0, 0, 0, 0.147411) 73.33%, rgba(0, 0, 0, 0.0816599) 80%, rgba(0, 0, 0, 0.03551) 86.67%, rgba(0, 0, 0, 0.0086472) 93.33%, rgba(0, 0, 0, 0) 100%)',
+    gradientBlueBottom: 'linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0.991353) 6.67%, rgba(0, 0, 0, 0.96449) 13.33%, rgba(0, 0, 0, 0.91834) 20%, rgba(0, 0, 0, 0.852589) 26.67%, rgba(0, 0, 0, 0.768225) 33.33%, rgba(0, 0, 0, 0.668116) 40%, rgba(0, 0, 0, 0.557309) 46.67%, rgba(0, 0, 0, 0.442691) 53.33%, rgba(0, 0, 0, 0.331884) 60%, rgba(0, 0, 0, 0.231775) 66.67%, rgba(0, 0, 0, 0.147411) 73.33%, rgba(0, 0, 0, 0.0816599) 80%, rgba(0, 0, 0, 0.03551) 86.67%, rgba(0, 0, 0, 0.0086472) 93.33%, rgba(0, 0, 0, 0) 100%)',
+    gradientGreen: 'linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.991353) 6.67%, rgba(0, 0, 0, 0.96449) 13.33%, rgba(0, 0, 0, 0.91834) 20%, rgba(0, 0, 0, 0.852589) 26.67%, rgba(0, 0, 0, 0.768225) 33.33%, rgba(0, 0, 0, 0.668116) 40%, rgba(0, 0, 0, 0.557309) 46.67%, rgba(0, 0, 0, 0.442691) 53.33%, rgba(0, 0, 0, 0.331884) 60%, rgba(0, 0, 0, 0.231775) 66.67%, rgba(0, 0, 0, 0.147411) 73.33%, rgba(0, 0, 0, 0.0816599) 80%, rgba(0, 0, 0, 0.03551) 86.67%, rgba(0, 0, 0, 0.0086472) 93.33%, rgba(0, 0, 0, 0) 100%)',
+    gradientRed: 'linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.991353) 6.67%, rgba(0, 0, 0, 0.96449) 13.33%, rgba(0, 0, 0, 0.91834) 20%, rgba(0, 0, 0, 0.852589) 26.67%, rgba(0, 0, 0, 0.768225) 33.33%, rgba(0, 0, 0, 0.668116) 40%, rgba(0, 0, 0, 0.557309) 46.67%, rgba(0, 0, 0, 0.442691) 53.33%, rgba(0, 0, 0, 0.331884) 60%, rgba(0, 0, 0, 0.231775) 66.67%, rgba(0, 0, 0, 0.147411) 73.33%, rgba(0, 0, 0, 0.0816599) 80%, rgba(0, 0, 0, 0.03551) 86.67%, rgba(0, 0, 0, 0.0086472) 93.33%, rgba(0, 0, 0, 0) 100%)',
 
-    constantBlack: '#000000',
-    constantWhite: '#FFFFFF',
-    blue: '#0077FF',
-    red: '#FF3B30',
+    constantBlack: '#000000', // Constant black color
+    constantWhite: '#FFFFFF', // Constant white color
+    blue: '#000000', // Black for blue accent
+    red: '#000000', // Black for red accent
 
-    corner3xSmall: '4px',
-    corner2xSmall: '8px',
-    cornerExtraSmall: '12px',
-    cornerSmall: '16px',
-    cornerMedium: '20px',
-    cornerLarge: '24px',
-    cornerFull: '100%',
-    fontMono: 'ui-monospace, SF Mono, monospace, Roboto Mono, Menlo, Consolas, Courier',
-    displayType: 'compact'
+    corner3xSmall: '0px', // Square corners for extra small elements
+    corner2xSmall: '0px', // Square corners for 2x small elements
+    cornerExtraSmall: '0px', // Square corners for extra small elements
+    cornerSmall: '0px', // Square corners for small elements
+    cornerMedium: '0px', // Square corners for medium elements
+    cornerLarge: '0px', // Square corners for large elements
+    cornerFull: '0px', // Square corners for full corner size
+    fontMono: 'ui-monospace, SF Mono, monospace, Roboto Mono, Menlo, Consolas, Courier', // Monospace font
+    displayType: 'compact' // Display type
 };
