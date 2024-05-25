@@ -68,6 +68,16 @@ const Symbol = styled(Label1)`
     color: ${props => props.theme.textSecondary};
 `;
 
+const VerificationTag = styled.div`
+    margin-top: 4px;
+    padding: 2px 6px;
+    font-size: 10px;
+    background-color: #e0ffe0;
+    color: #006400;
+    border-radius: 4px;
+    align-self: flex-start;
+`;
+
 export const TokenLayout: FC<{
     name: string;
     symbol?: string;
@@ -97,6 +107,11 @@ export const TokenLayout: FC<{
                 </Secondary>
                 <Secondary>{fiatAmount}</Secondary>
             </SecondLine>
+            {symbol === 'MPR' && (
+                <VerificationTag>
+                    Native Wallet Token 
+                </VerificationTag>
+            )}
         </Description>
     );
 };

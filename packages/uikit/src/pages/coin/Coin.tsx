@@ -4,6 +4,7 @@ import { AppRoute } from '../../libs/routes';
 import { JettonContent } from './Jetton';
 import { TonPage } from './Ton';
 import { TronPage } from './Tron';
+import { MprPage } from './MprPage'; // Import the new MPR page
 
 const CoinPage = () => {
     const navigate = useNavigate();
@@ -21,6 +22,8 @@ const CoinPage = () => {
         return <TronPage />;
     } else if (name === 'ton') {
         return <TonPage />;
+    } else if (name === 'mpr') { // Add condition for MPR token
+        return <MprPage />;
     } else {
         return <JettonContent jettonAddress={decodeURIComponent(name)} />;
     }

@@ -56,13 +56,9 @@ export const SettingsNetwork: FC = () => {
 
     return (
         <Block>
-            <Icon onClick={onChange}>
-                <TonkeeperIcon width="33" height="33" />
-            </Icon>
-            <Label2>Tonkeeper Web</Label2>
-            <Version onClick={() => sdk.copyToClipboard(version, t('App_version_copied'))}>
-                {t('settings_version')} {version}
-            </Version>
+            
+         
+           
         </Block>
     );
 };
