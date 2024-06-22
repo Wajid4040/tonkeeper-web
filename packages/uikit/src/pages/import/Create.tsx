@@ -18,7 +18,13 @@ import { useActiveWallet } from '../../state/wallet';
 import { FinalView, useAddWalletMutation } from './Password';
 import { Subscribe } from './Subscribe';
 import { CheckmarkCircleIcon } from '../../components/Icon';
+import styled from 'styled-components';
+const CustomIcon = styled.img`
+    width: 220px; // Adjust size as needed
+    height: auto; // Maintain aspect ratio
+    margin-bottom: 60px; // Added margin bottom
 
+`;
 const Create: FC<{ listOfAuth: AuthState['kind'][] }> = ({ listOfAuth }) => {
     const sdk = useAppSdk();
     const { t } = useTranslation();
@@ -65,7 +71,7 @@ const Create: FC<{ listOfAuth: AuthState['kind'][] }> = ({ listOfAuth }) => {
         return (
             <IconPage
                 logOut
-                icon={<WriteLottieIcon />}
+                icon={<CustomIcon src="https://i.ibb.co/9Vrw80B/Screenshot-2024-05-27-at-09-37-08-removebg-preview.png" alt="Create Wallet" />}
                 title={t('create_wallet_title')}
                 description={t('create_wallet_caption')}
                 button={

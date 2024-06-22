@@ -23,9 +23,7 @@ const Block = styled.div<{
     second?: boolean;
 }>`
     flex-shrink: 0;
-
     user-select: none;
-
     overflow: visible !important;
     top: 0;
     z-index: 4;
@@ -57,6 +55,13 @@ const Block = styled.div<{
         `}
 
     background-color: ${props => props.theme.backgroundPage};
+`;
+
+const BlockHeader = styled(Block)`
+    border-bottom: 2px solid ${props => props.theme.separatorCommon};
+    border-radius: 0 0 18px 18px;
+    margin-top: 0rem; /* Add margin at the bottom */
+
 `;
 
 export const HeaderGlobalStyle = createGlobalStyle`
@@ -211,7 +216,7 @@ export const Header: FC<{ showQrScan?: boolean }> = ({ showQrScan = true }) => {
     const shouldShowIcon = account.publicKeys.length > 1;
 
     return (
-        <Block center>
+        <BlockHeader center>
             <DropDown
                 center
                 payload={onClose => (
@@ -231,7 +236,7 @@ export const Header: FC<{ showQrScan?: boolean }> = ({ showQrScan = true }) => {
             {showQrScan && <ScanButton />}
 
             <ImportNotification isOpen={isOpen} setOpen={setOpen} />
-        </Block>
+        </BlockHeader>
     );
 };
 

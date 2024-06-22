@@ -43,6 +43,42 @@ const ButtonIcon = styled.div`
 const ColumnTextStyled = styled(ColumnText)`
     flex-grow: 1;
 `;
+
+const ModalOverlay = styled.div<{ isOpen: boolean }>`
+    display: ${props => (props.isOpen ? 'flex' : 'none')};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+    background-color: #1B5853; // Updated background color
+    padding: 2rem;
+    border-radius: ${props => props.theme.cornerLarge};
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+`;
+
+const CloseButton = styled.button`
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: ${props => props.theme.constantWhite};
+    font-size: 1.5rem;
+    cursor: pointer;
+`;
+
 export const ImportNotification: FC<{
     isOpen: boolean;
     setOpen: (value: boolean) => void;
@@ -52,84 +88,83 @@ export const ImportNotification: FC<{
     const { hideSigner } = useAppContext();
 
     return (
-        <Notification isOpen={isOpen} handleClose={() => setOpen(false)}>
-            {onClose => (
-                <div>
-                    <TextBlock>
-                        <Title>{t('import_add_wallet')}</Title>
-                        <BodyText>{t('import_add_wallet_description')}</BodyText>
-                    </TextBlock>
+        <ModalOverlay isOpen={isOpen}>
+            <ModalContent>
+                <CloseButton onClick={() => setOpen(false)}>&times;</CloseButton>
+                <ButtonBlock
+                    onClick={() => {
+                        onImport(AppRoute.import + ImportRoute.create);
+                        setOpen(false);
+                    }}
+                >
+                    <ButtonIcon>
+                        <AddIcon />
+                    </ButtonIcon>
+                    <ColumnText
+                        noWrap
+                        text={t('import_new_wallet')}
+                        secondary={t('import_new_wallet_description')}
+                    />
+                    <ButtonIcon>
+                        <RightIcon />
+                    </ButtonIcon>
+                </ButtonBlock>
+                <ButtonBlock
+                    onClick={() => {
+                        onImport(AppRoute.import + ImportRoute.import);
+                        setOpen(false);
+                    }}
+                >
+                    <ButtonIcon>
+                        <ImportIcon />
+                    </ButtonIcon>
+                    <ColumnText
+                        noWrap
+                        text={t('import_existing_wallet')}
+                        secondary={t('import_existing_wallet_description')}
+                    />
+                    <ButtonIcon>
+                        <RightIcon />
+                    </ButtonIcon>
+                </ButtonBlock>
+                {hideSigner === true ? null : (
                     <ButtonBlock
                         onClick={() => {
-                            onClose(() => onImport(AppRoute.import + ImportRoute.create));
+                            onImport(AppRoute.import + ImportRoute.signer);
+                            setOpen(false);
                         }}
                     >
                         <ButtonIcon>
-                            <AddIcon />
+                            <SignerIcon />
                         </ButtonIcon>
                         <ColumnText
                             noWrap
-                            text={t('import_new_wallet')}
-                            secondary={t('import_new_wallet_description')}
+                            text={t('import_signer')}
+                            secondary={t('import_signer_description')}
                         />
                         <ButtonIcon>
                             <RightIcon />
                         </ButtonIcon>
                     </ButtonBlock>
-                    <ButtonBlock
-                        onClick={() => {
-                            onClose(() => onImport(AppRoute.import + ImportRoute.import));
-                        }}
-                    >
-                        <ButtonIcon>
-                            <ImportIcon />
-                        </ButtonIcon>
-                        <ColumnText
-                            noWrap
-                            text={t('import_existing_wallet')}
-                            secondary={t('import_existing_wallet_description')}
-                        />
-                        <ButtonIcon>
-                            <RightIcon />
-                        </ButtonIcon>
-                    </ButtonBlock>
-                    {hideSigner === true ? null : (
-                        <ButtonBlock
-                            onClick={() => {
-                                onClose(() => onImport(AppRoute.import + ImportRoute.signer));
-                            }}
-                        >
-                            <ButtonIcon>
-                                <SignerIcon />
-                            </ButtonIcon>
-                            <ColumnText
-                                noWrap
-                                text={t('import_signer')}
-                                secondary={t('import_signer_description')}
-                            />
-                            <ButtonIcon>
-                                <RightIcon />
-                            </ButtonIcon>
-                        </ButtonBlock>
-                    )}
-                    <ButtonBlock
-                        onClick={() => {
-                            onClose(() => onImport(AppRoute.import + ImportRoute.ledger));
-                        }}
-                    >
-                        <ButtonIcon>
-                            <LedgerIcon />
-                        </ButtonIcon>
-                        <ColumnTextStyled
-                            text={t('ledger_pair_title')}
-                            secondary={t('ledger_pair_subtitle')}
-                        />
-                        <ButtonIcon>
-                            <RightIcon />
-                        </ButtonIcon>
-                    </ButtonBlock>
-                </div>
-            )}
-        </Notification>
+                )}
+                <ButtonBlock
+                    onClick={() => {
+                        onImport(AppRoute.import + ImportRoute.ledger);
+                        setOpen(false);
+                    }}
+                >
+                    <ButtonIcon>
+                        <LedgerIcon />
+                    </ButtonIcon>
+                    <ColumnTextStyled
+                        text={t('ledger_pair_title')}
+                        secondary={t('ledger_pair_subtitle')}
+                    />
+                    <ButtonIcon>
+                        <RightIcon />
+                    </ButtonIcon>
+                </ButtonBlock>
+            </ModalContent>
+        </ModalOverlay>
     );
 };

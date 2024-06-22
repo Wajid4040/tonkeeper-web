@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Body2, Label1 } from '../Text';
 
 interface DescriptionProps {
-    icon: JSX.Element;
     title: string;
     description: string;
 }
@@ -37,10 +36,9 @@ const Body = styled(Body2)`
     user-select: none;
 `;
 
-export const Description: FC<DescriptionProps> = ({ icon, title, description }) => {
+export const Description: FC<DescriptionProps> = ({ title, description }) => {
     return (
         <Block>
-            <Icon>{icon}</Icon>
             <Text>
                 <Title>{title}</Title>
                 <Body>{description}</Body>

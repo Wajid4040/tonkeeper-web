@@ -22,7 +22,7 @@ export interface SettingsListProps {
 const Icon = styled(Label1)<{ color?: string }>`
     display: flex;
     margin: -3px 0;
-    color: ${props => props.color ?? props.theme.accentBlue};
+    color: #1B5853;
 `;
 
 const Secondary = styled(Body1)`
@@ -36,6 +36,7 @@ const Text = styled.span`
 `;
 
 const ListBlockStyled = styled(ListBlock)<{ isDisabled?: boolean }>`
+    background-color: #1B5853;
     ${p =>
         p.isDisabled &&
         css`

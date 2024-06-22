@@ -87,7 +87,7 @@ export const JettonContent: FC<{ jettonAddress: string }> = ({ jettonAddress }) 
         <>
             <SubHeader title={info.metadata.name} />
             <InnerBody ref={ref}>
-                <JettonHeader balance={balance} info={info} />
+                <JettonHeader balance={balance}  info={info} />
                 <ActionsRow>
                     <SendAction asset={info.metadata.address} chain={BLOCKCHAIN_NAME.TON} />
                     <ReceiveAction jetton={info.metadata.address} />

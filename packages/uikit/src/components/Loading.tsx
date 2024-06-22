@@ -13,13 +13,18 @@ const Block = styled.div`
     color: ${props => props.theme.accentBlue};
 `;
 
+const Logo = styled.img`
+    width: 180px; // Increased size
+    height: 180px;
+    margin-bottom: 70px; // Added margin bottom
+`;
 // Use the public URL of your hosted image file
-const customImageURL = 'https://cache.tonapi.io/imgproxy/8leKEnEkM2PMVPk-EI1ZdQnpoScV33EnQeEkisrGAw0/rs:fill:200:200:1/g:no/aHR0cHM6Ly9tZWdhcGF5ZXIuaW8vd3AtY29udGVudC91cGxvYWRzL01lZ2FwYXllci1sb2dvdGlja2VyLnBuZw.webp';
+const customImageURL = 'https://i.ibb.co/XJC4snV/IMG-7537.png';
 
 export const Loading = React.forwardRef<HTMLDivElement>(({}, ref) => {
     return (
         <Block ref={ref}>
-            <img src={customImageURL} alt="Loading" />
+            <Logo src={customImageURL} alt="Loading" />
         </Block>
     );
 });

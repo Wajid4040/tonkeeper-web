@@ -8,19 +8,29 @@ export const ListItemPayload = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1rem 1rem 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
     box-sizing: border-box;
     gap: 1rem;
     width: 100%;
+    margin-left: -1rem;
+    background-color: #D2DDDE; /* Background color */
+    border: 1px solid #1B5853; /* Border color and width */
+    border-radius: 10px; /* Adjust the value as needed */
 `;
+
+
+
 
 export const TokenLogo = styled.img`
-    width: 44px;
-    height: 44px;
+    width: 30px;
+    height: 30px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+
     border-radius: ${props => props.theme.cornerFull};
 
-    pointer-events: none;
-`;
+
+    `;
 
 const Description = styled.div`
     flex-grow: 1;
@@ -41,15 +51,16 @@ const FirstLine = styled.div`
 const CoinName = styled(Label1)`
     text-overflow: ellipsis;
     overflow: hidden;
-
     display: flex;
     align-items: center;
+    font-size: 0.875rem; // Adjust font size to make it smaller
+    margin: 0;          // Optionally adjust margin
 `;
 
 const CoinLabel = styled(Label4)`
     display: inline-block;
     margin-left: 8px;
-    padding: 3px 4px;
+    padding: 2px 2px;
     border-radius: ${props => props.theme.corner3xSmall};
     background: ${props => props.theme.backgroundContentTint};
     color: ${props => props.theme.textSecondary};
@@ -107,11 +118,7 @@ export const TokenLayout: FC<{
                 </Secondary>
                 <Secondary>{fiatAmount}</Secondary>
             </SecondLine>
-            {symbol === 'MPR' && (
-                <VerificationTag>
-                    Native Wallet Token 
-                </VerificationTag>
-            )}
+          
         </Description>
     );
 };

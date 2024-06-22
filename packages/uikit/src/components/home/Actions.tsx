@@ -20,9 +20,9 @@ const Text = styled(Label3)`
 const Button = styled.div`
     width: 44px;
     height: 44px;
-    border-radius: ${props => props.theme.cornerFull};
+    border-radius: 8px;
     color: ${props => props.theme.textPrimary};
-    background-color: ${props => props.theme.backgroundContent};
+    background-color: #1B5853;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,33 +57,7 @@ const Block = styled.div<{
                 }
             `;
         }
-
-        if (props.ios) {
-            if (props.isHover) {
-                return css`
-                    ${Text} {
-                        color: ${props.theme.textPrimary};
-                        transition: color 0.1s ease;
-                    }
-                    ${Button} {
-                        background-color: ${props.theme.backgroundContentTint};
-                        transition: background-color 0.1s ease;
-                    }
-                `;
-            }
-            return undefined;
-        } else {
-            return css`
-                &:hover ${Text} {
-                    color: ${props.theme.textPrimary};
-                    transition: color 0.1s ease;
-                }
-                &:hover ${Button} {
-                    background-color: ${props.theme.backgroundContentTint};
-                    transition: background-color 0.1s ease;
-                }
-            `;
-        }
+        return undefined;
     }}
 `;
 

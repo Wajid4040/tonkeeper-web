@@ -11,7 +11,7 @@ export const BuyIcon = () => {
         >
             <path
                 d="M14 21.5V14M14 14V6.5M14 14H21.5M14 14H6.5"
-                stroke="currentColor"
+                stroke="white"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -19,6 +19,7 @@ export const BuyIcon = () => {
         </svg>
     );
 };
+
 
 export const SendIcon = () => {
     return (
@@ -31,7 +32,7 @@ export const SendIcon = () => {
         >
             <path
                 d="M14 6.5V21.5M14 6.5L7.5 13M14 6.5L20.5 13"
-                stroke="currentColor"
+                stroke="white"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -51,7 +52,7 @@ export const ReceiveIcon = () => {
         >
             <path
                 d="M14 21.5V6.5M14 21.5L7.5 15M14 21.5L20.5 15"
-                stroke="currentColor"
+                stroke="white"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"

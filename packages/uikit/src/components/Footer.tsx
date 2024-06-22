@@ -6,6 +6,10 @@ import { scrollToTop } from '../libs/common';
 import { AppRoute } from '../libs/routes';
 import { ActivityIcon, BrowserIcon, SettingsIcon, WalletIcon } from './NavigationIcons';
 import { Label3 } from './Text';
+const WalletImage = styled.img`
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+`;
 
 const Button = styled.div<{ active: boolean }>`
     user-select: none;
@@ -32,11 +36,15 @@ const Block = styled.div<{ standalone?: boolean; sticky?: boolean }>`
     bottom: 0;
     padding: 1rem;
     width: var(--app-width);
+    border-top: 1px solid #1B5853; /* Border on the upper side only */
     max-width: 548px;
     box-sizing: border-box;
     overflow: visible !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     z-index: 3;
-
+    border-top-right-radius: 18px; /* Border radius for the top right corner */
+    border-top-left-radius: 18px; /* Border radius for the top right corner */
+    
     background-color: ${props => props.theme.backgroundPage};
 
     ${props =>
@@ -101,29 +109,25 @@ export const Footer: FC<{ standalone?: boolean; sticky?: boolean }> = ({ standal
     return (
         <Block standalone={standalone} sticky={sticky}>
             <Button active={active === AppRoute.home} onClick={() => handleClick(AppRoute.home)}>
-                <WalletIcon />
-                <Label3>{t('wallet_title')}</Label3>
+            <WalletImage src="https://i.ibb.co/VHBbq6W/Whats-App-Image-2024-05-27-at-2-38-05-PM.jpg" alt="Wallet Icon" />
             </Button>
             <Button
                 active={active === AppRoute.activity}
                 onClick={() => handleClick(AppRoute.activity)}
             >
-                <ActivityIcon />
-                <Label3>{t('activity_screen_title')}</Label3>
+            <WalletImage src="https://i.ibb.co/0M8rNjn/Whats-App-Image-2024-05-27-at-2-33-01-PM.jpg" alt="Wallet Icon" />
             </Button>
             <Button
                 active={active === AppRoute.browser}
                 onClick={() => handleClick(AppRoute.browser)}
             >
-                <BrowserIcon />
-                <Label3>{t('browser_title')}</Label3>
+            <WalletImage src="https://i.ibb.co/9r6xw1S/Whats-App-Image-2024-05-27-at-2-35-07-PM.jpg" alt="Wallet Icon" />
             </Button>
             <Button
                 active={active === AppRoute.settings}
                 onClick={() => handleClick(AppRoute.settings)}
             >
-                <SettingsIcon />
-                <Label3>{t('settings_title')}</Label3>
+            <WalletImage src="https://i.ibb.co/RGK5DfF/Whats-App-Image-2024-05-27-at-2-23-44-PM.jpg" alt="Wallet Icon" />
             </Button>
         </Block>
     );

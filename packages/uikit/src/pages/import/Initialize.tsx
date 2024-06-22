@@ -1,7 +1,6 @@
 import { FC, PropsWithChildren, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { CenterContainer } from '../../components/Layout';
-import { RocketIcon, ShieldIcon } from '../../components/create/CreateIcon';
 import { Description } from '../../components/create/Description';
 import { ImportNotification } from '../../components/create/ImportNotification';
 import { Button } from '../../components/fields/Button';
@@ -52,8 +51,14 @@ const LogoContainer = styled.div`
 `;
 
 const Logo = styled.img`
-    width: 300px; // Increased size
-    height: auto;
+    width: 180px; // Increased size
+    height: 180px;
+    margin-bottom: 70px; // Added margin bottom
+`;
+
+const CenteredDescription = styled.div`
+    text-align: center;
+    margin-bottom: 2rem;
 `;
 
 const Initialize: FC = () => {
@@ -68,20 +73,14 @@ const Initialize: FC = () => {
     return (
         <CenterContainer>
             <LogoContainer>
-                <Logo src="https://i.ibb.co/CwTPbzc/IMG-7415.png" alt="Logo" />
+                <Logo src="https://i.ibb.co/XJC4snV/IMG-7537.png" alt="Logo" />
             </LogoContainer>
-            <div>
+            <CenteredDescription>
                 <Description
-                    icon={<RocketIcon />}
-                    title={t('intro_item1_title')}
-                    description={t('intro_item1_caption')}
+                    title="Welcome to MegaPayer"
+                    description="With the advanced capabilities of The Open Network (TON), enjoy lightning-fast transaction speeds and unparalleled security."
                 />
-                <Description
-                    icon={<ShieldIcon />}
-                    title={t('intro_item2_title')}
-                    description={t('intro_item2_caption')}
-                />
-            </div>
+            </CenteredDescription>
             <Button size="large" fullWidth primary marginTop onClick={onClick}>
                 {t('intro_continue_btn')}
             </Button>
