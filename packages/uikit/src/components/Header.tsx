@@ -337,7 +337,7 @@ const CountryButton = styled.button`
     right: 16px;
     top: 16px;
     color: ${props => props.theme.buttonSecondaryForeground};
-    background: ${props => props.theme.buttonSecondaryBackground};
+    background: #d1fdea;
     border-radius: ${props => props.theme.cornerSmall};
     border: none;
     padding: 6px 12px;

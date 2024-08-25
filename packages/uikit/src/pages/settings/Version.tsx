@@ -29,7 +29,7 @@ import { AppRoute } from '../../libs/routes';
 import { SkeletonList } from '../../components/Skeleton';
 
 const LedgerError = styled(Body2)`
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     color: ${p => p.theme.accentRed};
 `;
 
@@ -46,6 +46,11 @@ const Body2Secondary = styled(Body2)`
 const ButtonsContainer = styled.div`
     display: flex;
     gap: 8px;
+    padding-right: 2px;
+`;
+
+const OpenButton = styled(Button)`
+    color: white; /* Set text color to white */
 `;
 
 export const WalletVersionPage = () => {
@@ -147,12 +152,12 @@ export const WalletVersionPageContent: FC<{
                                     </TextContainer>
                                     {isWalletAdded ? (
                                         <ButtonsContainer>
-                                            <Button
+                                            <OpenButton
                                                 onClick={() => onOpenWallet(wallet.address)}
                                                 loading={isLoading}
                                             >
                                                 {t('open')}
-                                            </Button>
+                                            </OpenButton>
                                             {canHide && (
                                                 <Button
                                                     onClick={() => onHideWallet(wallet)}

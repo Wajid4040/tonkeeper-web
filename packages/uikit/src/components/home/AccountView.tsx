@@ -26,6 +26,24 @@ import { useActiveTonNetwork, useActiveWallet } from '../../state/wallet';
 const CopyBlock = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center; /* Center the button */
+    margin-top: 16px; /* Add some margin for spacing */
+`;
+
+const GradientButton = styled(Button)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px; /* Increased width */
+    height: 50px; /* Set fixed height */
+    background: linear-gradient(45deg, #6ddcb2, #388573); /* Gradient background */
+    color: white;
+    border-radius: 12px;
+    gap: 8px;
+
+    &:hover {
+        background-color: ${props => props.theme.backgroundHighlighted};
+    }
 `;
 
 export const Background = styled.div<{ extension?: boolean; margin?: boolean }>`
@@ -98,11 +116,6 @@ const Description = styled(Body1)`
     color: ${props => props.theme.textSecondary};
 `;
 
-/*const values = [
-    { name: BLOCKCHAIN_NAME.TON, id: BLOCKCHAIN_NAME.TON },
-    { name: 'TRC20', id: BLOCKCHAIN_NAME.TRON }
-];*/
-
 export const HeaderBlock: FC<{ title?: string; description: string }> = ({
     title,
     description
@@ -122,7 +135,7 @@ const CopyButton: FC<{ address: string }> = ({ address }) => {
 
     return (
         <CopyBlock>
-            <Button
+            <GradientButton
                 secondary
                 onClick={e => {
                     e.preventDefault();
@@ -131,7 +144,7 @@ const CopyButton: FC<{ address: string }> = ({ address }) => {
             >
                 <CopyIcon />
                 <span>{t('Copy_address')}</span>
-            </Button>
+            </GradientButton>
         </CopyBlock>
     );
 };

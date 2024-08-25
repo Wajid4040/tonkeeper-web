@@ -8,7 +8,6 @@ export const GlobalStyleCss = css`
         -moz-osx-font-smoothing: grayscale;
         background-color: ${props => props.theme.backgroundContent};
         color: ${props => props.theme.textPrimary};
-
         overflow-y: scroll;
     }
 
@@ -24,10 +23,7 @@ export const GlobalStyleCss = css`
     html.is-locked,
     html.is-locked body,
     html.is-locked #root {
-        /* want to block all overflowing content */
         overflow: hidden;
-
-        /* want to exclude padding from the height */
         box-sizing: border-box;
     }
 
@@ -74,6 +70,12 @@ export const GlobalStyleCss = css`
     .linux .hide-scrollbar::-webkit-scrollbar {
         width: 0;
     }
+
+    // Targeting the logout button specifically
+    .logout-button,
+    button[aria-label="logout"] {
+        color: white !important;
+    }
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -88,7 +90,6 @@ export const Container = styled.div`
     flex-direction: column;
     min-height: var(--app-height);
     background-color: ${props => props.theme.backgroundPage};
-
     white-space: pre-wrap;
 `;
 

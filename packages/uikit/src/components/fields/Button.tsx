@@ -33,6 +33,7 @@ export const ButtonElement = styled.button<Omit<ButtonProps, 'loading'>>`
 
     font-style: normal;
 
+
     transition: background-color 0.1s ease, color 0.1s ease;
 
     ${p =>
@@ -95,8 +96,10 @@ export const ButtonElement = styled.button<Omit<ButtonProps, 'loading'>>`
                 `;
             default:
                 return css`
-                    height: 48px;
+                    height: 30px;
                     padding: 0 20px;
+                  
+                  
                 `;
         }
     }}
@@ -135,28 +138,14 @@ export const ButtonElement = styled.button<Omit<ButtonProps, 'loading'>>`
   &:hover {
         ${props => {
             if (props.disabled) return;
-            if (props.primary) {
-                return css`
-                    background-color: ${props.theme.buttonPrimaryBackgroundHighlighted};
-                `;
-            } else if (props.secondary) {
-                return css`
-                    background-color: ${props.theme.buttonSecondaryBackgroundHighlighted};
-                `;
-            } else if (props.warn) {
-                return css`
-                    background-color: ${props.theme.buttonWarnBackgroundHighlighted};
-                `;
-            } else {
-                return css`
-                    background-color: ${props.theme.buttonTertiaryBackgroundHighlighted};
-                `;
-            }
+            return css`
+                background: linear-gradient(90deg, #6ddcb2, #388573);
+            `;
         }}
     }
 
     ${props => {
-        if (props.primary) {
+        if (props.primary || props.secondary || props.warn) {
             if (props.disabled) {
                 return css`
                     color: ${props.theme.buttonPrimaryForegroundDisabled};
@@ -165,31 +154,7 @@ export const ButtonElement = styled.button<Omit<ButtonProps, 'loading'>>`
             } else {
                 return css`
                     color: ${props.theme.buttonPrimaryForeground};
-                    background-color: ${props.theme.buttonPrimaryBackground};
-                `;
-            }
-        } else if (props.secondary) {
-            if (props.disabled) {
-                return css`
-                    color: ${props.theme.buttonSecondaryForegroundDisabled};
-                    background-color: ${props.theme.buttonSecondaryBackgroundDisabled};
-                `;
-            } else {
-                return css`
-                    color: ${props.theme.buttonSecondaryForeground};
-                    background-color: ${props.theme.buttonSecondaryBackground};
-                `;
-            }
-        } else if (props.warn) {
-            if (props.disabled) {
-                return css`
-                    color: ${props.theme.buttonWarnForegroundDisabled};
-                    background-color: ${props.theme.buttonWarnBackgroundDisabled};
-                `;
-            } else {
-                return css`
-                    color: ${props.theme.buttonWarnForeground};
-                    background-color: ${props.theme.buttonWarnBackground};
+                    background: linear-gradient(90deg, #6ddcb2, #388573);
                 `;
             }
         } else {
@@ -201,7 +166,7 @@ export const ButtonElement = styled.button<Omit<ButtonProps, 'loading'>>`
             } else {
                 return css`
                     color: ${props.theme.buttonTertiaryForeground};
-                    background-color: ${props.theme.buttonTertiaryBackground};
+                    background: linear-gradient(90deg, #6ddcb2, #388573);
                 `;
             }
         }

@@ -18,11 +18,13 @@ import {
 
 const Title = styled(H2)`
     user-select: none;
+  
 `;
+
 const BodyText = styled(Body1)`
-    color: ${props => props.theme.textSecondary};
     user-select: none;
 `;
+
 const TextBlock = styled.div`
     text-align: center;
     margin-bottom: 2rem;
@@ -32,7 +34,7 @@ const ButtonBlock = styled.div`
     display: flex;
     gap: 16px;
     padding: 16px;
-    background: ${props => props.theme.backgroundContent};
+    background: #4aa389;
     cursor: pointer;
     align-items: center;
     margin: 0 16px 16px;
@@ -40,7 +42,7 @@ const ButtonBlock = styled.div`
 `;
 
 const ButtonIcon = styled.div`
-    color: ${props => props.theme.accentBlue};
+    color: white !important; /* Force color to white */
     height: 28px;
     display: flex;
     align-items: center;
@@ -49,7 +51,23 @@ const ButtonIcon = styled.div`
 
 const ColumnTextStyled = styled(ColumnText)`
     flex-grow: 1;
+    color: white !important; /* Ensure text color is white */
+
+    /* Target secondary text specifically */
+    & > span {
+        color: white !important; /* Ensure secondary text color is white */
+    }
 `;
+
+const ColumnTextWhite = styled(ColumnText)`
+    color: white !important; /* Explicitly set color to white for headings and subtitles */
+
+    /* Target secondary text specifically */
+    & > span {
+        color: white !important; /* Ensure secondary text color is white */
+    }
+`;
+
 export const ImportNotification: FC<{
     isOpen: boolean;
     setOpen: (value: boolean) => void;
@@ -74,7 +92,7 @@ export const ImportNotification: FC<{
                         <ButtonIcon>
                             <AddIcon />
                         </ButtonIcon>
-                        <ColumnText
+                        <ColumnTextWhite
                             noWrap
                             text={t('import_new_wallet')}
                             secondary={t('import_new_wallet_description')}
@@ -91,7 +109,7 @@ export const ImportNotification: FC<{
                         <ButtonIcon>
                             <ImportIcon />
                         </ButtonIcon>
-                        <ColumnText
+                        <ColumnTextWhite
                             noWrap
                             text={t('import_existing_wallet')}
                             secondary={t('import_existing_wallet_description')}
@@ -109,7 +127,7 @@ export const ImportNotification: FC<{
                             <ButtonIcon>
                                 <SignerIcon />
                             </ButtonIcon>
-                            <ColumnText
+                            <ColumnTextWhite
                                 noWrap
                                 text={t('import_signer')}
                                 secondary={t('import_signer_description')}

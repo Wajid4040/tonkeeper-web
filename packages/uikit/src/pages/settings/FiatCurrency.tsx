@@ -8,6 +8,15 @@ import { SettingsItem, SettingsList } from '../../components/settings/SettingsLi
 import { useAppContext } from '../../hooks/appContext';
 import { useTranslation } from '../../hooks/translation';
 import { useMutateUserFiat } from '../../state/fiat';
+import styled from 'styled-components';
+
+const CurrencyBox = styled.div`
+    padding: 16px;
+    box-shadow: 0 4px 8px #449981;
+    border-radius: 40px;
+    background-color: #fff;
+    margin-bottom: 24px;
+`;
 
 export const FiatCurrency = () => {
     const { t, i18n } = useTranslation();
@@ -33,7 +42,9 @@ export const FiatCurrency = () => {
         <>
             <SubHeader title={t('settings_primary_currency')} />
             <InnerBody>
-                <SettingsList items={items} />
+                <CurrencyBox>
+                    <SettingsList items={items} />
+                </CurrencyBox>
             </InnerBody>
         </>
     );

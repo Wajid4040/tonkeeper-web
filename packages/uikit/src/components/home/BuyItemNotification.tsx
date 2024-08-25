@@ -22,11 +22,11 @@ import { Notification } from '../Notification';
 import { Body1, H3, Label1 } from '../Text';
 import { Button } from '../fields/Button';
 import { Checkbox } from '../fields/Checkbox';
-import { useCreateMercuryoProUrl } from '../../state/tonendpoint';
 import { hexToRGBA } from '../../libs/css';
 import { useActiveWallet } from '../../state/wallet';
 
-const Logo = styled.img<{ large?: boolean }>`
+// Custom Icon for MegaPayer
+const MegaPayerIcon = styled.img<{ large?: boolean }>`
     pointer-events: none;
 
     ${props =>
@@ -171,7 +171,7 @@ const replacePlaceholders = (
         .replace('{CUR_TO}', CUR_TO);
 
     if (url.includes('TX_ID')) {
-        const txId = 'mercuryo_' + uuidv4();
+        const txId = 'megapayer_' + uuidv4();
         url = url.replace(/\{TX_ID\}/g, txId);
         url = url.replace(/\=TON\&/gi, '=TONCOIN&');
         url += `&signature=${sha512_sync(`${address}${config.mercuryoSecret ?? ''}`).toString(
@@ -218,18 +218,7 @@ export const BuyItemNotification: FC<{
 
     const { data: hided } = useShowDisclaimer(item.title, kind);
     const { mutate } = useHideDisclaimerMutation(item.title, kind);
-    const { mutateAsync: createMercuryoProUrl } = useCreateMercuryoProUrl();
 
-    const onForceOpen = async () => {
-        track(item.action_button.url);
-
-        let urlToOpen = item.action_button.url;
-        if (item.id === 'mercuryo_pro') {
-            urlToOpen = await createMercuryoProUrl(item.action_button.url);
-        }
-        sdk.openPage(replacePlaceholders(urlToOpen, config, wallet, fiat, kind));
-        setOpen(false);
-    };
     const onOpen: React.MouseEventHandler<HTMLDivElement> = () => {
         if (hided) {
             onForceOpen();
@@ -238,18 +227,25 @@ export const BuyItemNotification: FC<{
         }
     };
 
+    const onForceOpen = async () => {
+        track(item.action_button.url);
+
+       
+       
+    };
+
     return (
         <>
             <ListItem key={item.title} onClick={onOpen}>
                 <ItemPayload>
                     <Description>
-                        <Logo src={item.icon_url} />
+                        <MegaPayerIcon src={"/mega.png"} />
                         <Text>
                             <Label1Styled>
-                                {item.title}
-                                {item.badge && <Badge>{item.badge}</Badge>}
+                                MegaPayer
+                                
                             </Label1Styled>
-                            <Body>{item.description}</Body>
+                            
                         </Text>
                     </Description>
                     <Icon>
@@ -260,17 +256,16 @@ export const BuyItemNotification: FC<{
             <Notification isOpen={open} handleClose={() => setOpen(false)}>
                 {() => (
                     <NotificationBlock>
-                        <Logo large src={item.icon_url} />
+                        <MegaPayerIcon large src={"/mega.png"} />
                         <H3Styled>
-                            {item.title}
-                            {item.badge && <Badge>{item.badge}</Badge>}
+                            MegaPayer
+                            
                         </H3Styled>
                         <Center>
                             <Body>{item.description}</Body>
                         </Center>
                         <Disclaimer buttons={item.info_buttons} />
-                        <Button size="large" fullWidth primary onClick={onForceOpen}>
-                            {item.action_button.title}
+                        <Button >Buy Token
                         </Button>
                         <CheckboxBlock>
                             <Checkbox checked={!!hided} onChange={mutate}>

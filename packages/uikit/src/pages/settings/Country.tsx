@@ -16,25 +16,20 @@ const Block = styled.div`
     margin-bottom: 32px;
 `;
 
+const CountryBox = styled.div`
+    padding: 16px;
+    box-shadow: 0 4px 8px #449981;
+    border-radius: 40px;
+    background-color: #fff;
+    margin-bottom: 24px;
+`;
+
 export const CountrySettings = () => {
     const { t, i18n } = useTranslation();
 
     const { data: selected } = useCountrySetting();
     const { data: detected } = useAutoCountry();
     const { mutate } = useMutateUserCountry();
-
-    let [searchParams, setSearchParams] = useSearchParams();
-
-    const search = useMemo(() => {
-        return new URLSearchParams(searchParams).get('search') ?? '';
-    }, [searchParams]);
-
-    const setSearch = useCallback(
-        (search: string) => {
-            setSearchParams({ search }, { replace: true });
-        },
-        [setSearchParams]
-    );
 
     const autoItem = useMemo<SettingsItem[]>(() => {
         return [
@@ -48,37 +43,28 @@ export const CountrySettings = () => {
     }, [t, selected, detected, mutate]);
 
     const countries = useMemo<SettingsItem[]>(() => {
-        return Object.entries(country.all)
-            .filter(([key, value]) =>
-                (value as any).name.toLowerCase().includes(search.trim().toLowerCase())
-            )
-            .map(([key, value]) => {
-                return {
-                    name:
-                        new Intl.DisplayNames([intlLocale(i18n.language)], { type: 'region' }).of(
-                            key
-                        ) ?? (value as any).name,
-                    preIcon: <CountryIcon country={key} />,
-                    icon: selected == key ? <CheckIcon /> : undefined,
-                    action: () => mutate(key)
-                };
-            });
-    }, [selected, mutate, search]);
+        return Object.entries(country.all).map(([key, value]) => {
+            return {
+                name:
+                    new Intl.DisplayNames([intlLocale(i18n.language)], { type: 'region' }).of(
+                        key
+                    ) ?? (value as any).name,
+                preIcon: <CountryIcon country={key} />,
+                icon: selected == key ? <CheckIcon /> : undefined,
+                action: () => mutate(key)
+            };
+        });
+    }, [selected, mutate]);
 
     return (
         <>
             <SubHeader title={t('country')} />
             <InnerBody>
-                <Block>
-                    <Input
-                        value={search}
-                        onChange={setSearch}
-                        label={t('settings_search_engine')}
-                        clearButton
-                    />
-                </Block>
+               
                 <SettingsList items={autoItem} />
-                <SettingsList items={countries} />
+                <CountryBox>
+                    <SettingsList items={countries} />
+                </CountryBox>
             </InnerBody>
         </>
     );

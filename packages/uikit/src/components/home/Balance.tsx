@@ -17,25 +17,51 @@ import { AccountAndWalletBadgesGroup } from '../account/AccountBadge';
 const Block = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-bottom: 32px;
+    align-items: flex-start; /* Align content to the start */
+    padding-bottom: 60px;
+    background-image: url('/background.png');
+    background-size: ;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px; /* Adjust the height as needed */
+    width: 100% /* Adjust the width as needed */
+    padding-left: 20px; /* Add padding to move text slightly forward */
+`;
+
+const BoldText = styled.div`
+    font-weight: 950; /* Make the text bolder */
+    font-size: 1.2rem; /* Increase font size for emphasis */
+    color: white;
+    padding-left: 55px;
+    padding-top: 60px;
+    /* Add some space after the bold text */
+`;
+
+const Amount = styled(Num2)`
+    margin-bottom: 1rem; /* Increase the margin to move it further down */
+    margin-left: 55px; /* Add left margin for spacing */
+    user-select: none;
+    color: white; /* Set amount text color to white */
 `;
 
 const Body = styled(Label2)`
-    color: ${props => props.theme.textSecondary};
+    color: white; /* Set text color to white */
     user-select: none;
     display: flex;
     cursor: pointer;
+    background-size: contain;
+    padding-top: 39px;
+    background-repeat: no-repeat;
+    margin-left: 45px; /* Increased left margin for more spacing */
+    background-position: center;
+    padding: 5px; /* Add some padding for better visual appearance */
+    height: 100px; /* Adjust the height as needed */
+    width: calc(100% - 20px); /* Adjust the width as needed with padding */
 
     transition: transform 0.2s ease;
     &:active {
         transform: scale(0.97);
     }
-`;
-
-const Amount = styled(Num2)`
-    margin-bottom: 0.5rem;
-    user-select: none;
 `;
 
 const Error = styled.div`
@@ -111,6 +137,7 @@ export const Balance: FC<{
 
     return (
         <Block>
+            <BoldText>Current Address</BoldText>
             <MessageBlock error={error} isFetching={isFetching} />
             <Amount>{formatFiatCurrency(fiat, total || 0)}</Amount>
             <Body onClick={() => sdk.copyToClipboard(address, t('address_copied'))}>

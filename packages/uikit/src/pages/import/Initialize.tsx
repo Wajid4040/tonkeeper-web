@@ -54,6 +54,16 @@ const Title = styled(H1)`
     user-select: none;
 `;
 
+const StyledButton = styled(Button)`
+    background: linear-gradient(90deg, #6ddcb2, #388573);
+    border: none;
+    color: white;
+    box-shadow: 0px 8px 20px #c5ffdb;
+    &:hover {
+        background: linear-gradient(90deg, #388573, #6ddcb2);
+    }
+`;
+
 const Initialize: FC = () => {
     const { t } = useTranslation();
     const [isOpen, setOpen] = useState(false);
@@ -67,7 +77,7 @@ const Initialize: FC = () => {
         <CenterContainer>
             <Title>
                 {t('intro_title')}
-                <Accent>Tonkeeper</Accent>
+                <Accent>MEGAPAYER</Accent>
             </Title>
             <div>
                 <Description
@@ -81,9 +91,9 @@ const Initialize: FC = () => {
                     description={t('intro_item2_caption')}
                 />
             </div>
-            <Button size="large" fullWidth primary marginTop onClick={onClick}>
+            <StyledButton size="large" fullWidth primary marginTop onClick={onClick}>
                 {t('intro_continue_btn')}
-            </Button>
+            </StyledButton>
             <ImportNotification isOpen={isOpen} setOpen={setOpen} />
         </CenterContainer>
     );

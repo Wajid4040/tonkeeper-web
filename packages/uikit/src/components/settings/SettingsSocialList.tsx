@@ -1,43 +1,28 @@
 import React, { FC, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../hooks/appContext';
 import { useAppSdk } from '../../hooks/appSdk';
 import { useTranslation } from '../../hooks/translation';
-import { SettingsRoute, relative } from '../../libs/routes';
-import { ContactSupportIcon, LegalDocumentsIcon, TelegramIcon } from './SettingsIcons';
 import { SettingsItem, SettingsList } from './SettingsList';
+import settingIcon from '/settingicon.png'; // Import the setting icon
 
+// Place the SettingsSocialList component code right after the imports
 export const SettingsSocialList: FC = React.memo(() => {
-    const navigate = useNavigate();
     const sdk = useAppSdk();
     const { config } = useAppContext();
-
     const { t } = useTranslation();
+
     const items = useMemo(() => {
         const result = [] as SettingsItem[];
         return result.concat([
             {
                 name: t('settings_support'),
-                icon: <TelegramIcon />,
+                icon: <img src={settingIcon} alt="Icon" style={{ width: '12px', height: '12px',paddingRight:'36px'  }} />, // Use the setting icon
                 action: () => config.directSupportUrl && sdk.openPage(config.directSupportUrl)
-            },
-            {
-                name: t('settings_news'),
-                icon: <TelegramIcon />,
-                action: () => config.tonkeeperNewsUrl && sdk.openPage(config.tonkeeperNewsUrl)
-            },
-            {
-                name: t('settings_contact_support'),
-                icon: <ContactSupportIcon />,
-                action: () => config.supportLink && sdk.openPage(config.supportLink)
-            },
-            {
-                name: t('settings_legal_documents'),
-                icon: <LegalDocumentsIcon />,
-                action: () => navigate(relative(SettingsRoute.legal))
             }
         ]);
-    }, [t, navigate, sdk.openPage]);
+    }, [t, sdk, config.directSupportUrl]);
 
     return <SettingsList items={items} />;
 });
+
+// Other components, logic, or exports can follow below

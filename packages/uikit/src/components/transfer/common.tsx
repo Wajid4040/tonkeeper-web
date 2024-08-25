@@ -46,7 +46,6 @@ const ButtonBlockElement = styled.div<{ standalone: boolean }>`
                   `}
         height: calc(100% + 2rem);
         z-index: -1;
-        background: ${props => props.theme.gradientBackgroundBottom};
     }
 
     ${props =>
@@ -160,12 +159,27 @@ export const ButtonBlock = React.forwardRef<HTMLDivElement, PropsWithChildren>(
 );
 ButtonBlock.displayName = 'ButtonBlock';
 
+const GradientButton = styled(Button)`
+background: linear-gradient(90deg, #6ddcb2, #388573);
+    color: white;
+    &:disabled {
+        background: linear-gradient(90deg, #388573, #6ddcb2);
+    }
+`;
+
+// Define the interface for the props
+interface AmountMainButtonProps {
+    isLoading: boolean;
+    isDisabled: boolean;
+    onClick: () => void;
+}
+
 export const MainButton = ({ isLoading, onClick }: { isLoading: boolean; onClick: () => void }) => {
     const { t } = useTranslation();
 
     return (
         <ButtonBlock>
-            <Button
+            <GradientButton
                 fullWidth
                 size="large"
                 primary
@@ -174,7 +188,7 @@ export const MainButton = ({ isLoading, onClick }: { isLoading: boolean; onClick
                 onClick={onClick}
             >
                 {t('continue')}
-            </Button>
+            </GradientButton>
         </ButtonBlock>
     );
 };
@@ -186,18 +200,13 @@ export type AmountMainButtonComponent = (props: {
     ref: React.RefObject<HTMLDivElement>;
 }) => JSX.Element;
 
-interface AmountMainButtonProps {
-    isLoading: boolean;
-    isDisabled: boolean;
-    onClick: () => void;
-}
 export const AmountMainButton = React.forwardRef<HTMLDivElement, AmountMainButtonProps>(
     ({ isLoading, isDisabled, onClick }, refButton) => {
         const { t } = useTranslation();
 
         return (
             <ButtonBlock ref={refButton}>
-                <Button
+                <GradientButton
                     fullWidth
                     size="large"
                     primary
@@ -207,7 +216,7 @@ export const AmountMainButton = React.forwardRef<HTMLDivElement, AmountMainButto
                     onClick={onClick}
                 >
                     {t('continue')}
-                </Button>
+                </GradientButton>
             </ButtonBlock>
         );
     }
@@ -224,7 +233,7 @@ export const ConfirmMainButton: ConfirmMainButtonProps = ({ isLoading, isDisable
     const { t } = useTranslation();
     const isLedger = useIsActiveWalletLedger();
     return (
-        <Button
+        <GradientButton
             fullWidth
             size="large"
             primary
@@ -234,7 +243,7 @@ export const ConfirmMainButton: ConfirmMainButtonProps = ({ isLoading, isDisable
             onClick={onClick}
         >
             {t(isLedger ? 'ledger_continue_with_ledger' : 'confirm_sending_submit')}
-        </Button>
+        </GradientButton>
     );
 };
 
@@ -259,9 +268,9 @@ export const ConfirmAndCancelMainButton: ConfirmMainButtonProps = ({
             <Button size="large" secondary type="button" onClick={onClose}>
                 {t('cancel')}
             </Button>
-            <Button size="large" primary type="submit" disabled={isDisabled} loading={isLoading}>
+            <GradientButton size="large" primary type="submit" disabled={isDisabled} loading={isLoading}>
                 {t(isLedger ? 'ledger_continue_with_ledger' : 'confirm')}
-            </Button>
+            </GradientButton>
         </ConfirmViewButtonsContainerStyled>
     );
 };

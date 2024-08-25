@@ -41,7 +41,12 @@ const Block = styled.div`
     display: flex;
     flex-direction: column;
     gap: 16px;
+    background-color: white; /* White background */
+    border: 1px solid green; /* Green border */
+    border-radius: 8px; /* Optional: Rounded corners */
+    padding: 16px; /* Optional: Padding inside the box */
 `;
+
 const ActionNotification: FC<{
     item: TonendpoinFiatCategory;
     kind: 'buy' | 'sell';
@@ -84,6 +89,10 @@ const ActionNotification: FC<{
 
 const OtherBlock = styled.div`
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* Background color for the OtherBlock */
 
     ${p =>
         p.theme.displayType === 'full-width' &&
@@ -94,11 +103,15 @@ const OtherBlock = styled.div`
 
 const OtherLink = styled(Label2)`
     cursor: pointer;
-    padding: 7.5px 1rem 8.5px;
-    background-color: ${props => props.theme.backgroundContent};
+    width: 180px; /* Increased width */
+    height: 50px; /* Set fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #6ddcb2, #388573); /* Gradient background */
     transition: background-color 0.1s ease;
+    color: white;
     border-radius: ${props => props.theme.cornerMedium};
-    display: inline-block;
 
     &:hover {
         background-color: ${props => props.theme.backgroundHighlighted};

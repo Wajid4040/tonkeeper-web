@@ -8,7 +8,7 @@ dotenv.config();
 
 const namespaces = ['tonkeeper', 'tonkeeper-web'];
 
-const localeMap = {
+const localeMap: { [key: string]: string } = {
     'ru-RU': 'ru',
     'tr-TR': 'tr',
     'zh-Hans-CN': 'zh_CN'
@@ -65,6 +65,7 @@ const createDirFolders = () => {
         fs.mkdirSync(path.join(dist, locales));
     }
 };
+
 const fillMissingLocales = (
     resources: Record<string, { translation: Record<string, string> }>,
     defaultResource: Record<string, string>
@@ -77,6 +78,7 @@ const fillMissingLocales = (
         });
     });
 };
+
 const writeFiles = (
     resources: Record<string, { translation: Record<string, string> }>,
     defaultResource: Record<string, string>

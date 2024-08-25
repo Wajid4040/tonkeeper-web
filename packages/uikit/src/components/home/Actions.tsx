@@ -22,7 +22,7 @@ const Button = styled.div`
     height: 44px;
     border-radius: ${props => props.theme.cornerFull};
     color: ${props => props.theme.textPrimary};
-    background-color: ${props => props.theme.backgroundContent};
+  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +79,7 @@ const Block = styled.div<{
                     transition: color 0.1s ease;
                 }
                 &:hover ${Button} {
-                    background-color: ${props.theme.backgroundContentTint};
+                   
                     transition: background-color 0.1s ease;
                 }
             `;

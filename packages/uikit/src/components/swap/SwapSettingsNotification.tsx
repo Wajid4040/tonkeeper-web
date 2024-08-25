@@ -1,5 +1,5 @@
 import React, { FC, useLayoutEffect, useState } from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { Body3, Label2 } from '../Text';
 import { RadioFlatInput } from '../shared/RadioFlatInput';
 import { Notification } from '../Notification';
@@ -51,6 +51,36 @@ const ButtonsContainer = styled.div`
     gap: 0.5rem;
     > * {
         flex: 1;
+    }
+`;
+
+const SquareGradientButton = styled(Button)`
+    width: 50px; /* Make the button square */
+    height: 50px;
+    background: linear-gradient(135deg, #ddf2e8 0%, #c4ebd6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color:black;
+    border-radius: 10px; /* Optional: Round the corners slightly */
+    &:hover {
+        background: linear-gradient(135deg, #c4ebd6 0%, #a2d4b6 100%);
+    }
+`;
+
+const SquareCancelButton = styled(Button)`
+    width: 50px; /* Make the button square */
+    height: 50px;
+    background: linear-gradient(135deg, #ed442c 0%, #f8aa68 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    border-radius: 10px; /* Optional: Round the corners slightly */
+    &:hover {
+        background: linear-gradient(135deg, #f8aa68 0%, #ed442c 100%);
     }
 `;
 
@@ -116,16 +146,16 @@ const SwapSettingsNotificationContent: FC<{ onClose: () => void }> = ({ onClose 
                 ))}
             </SlippageOptionsContainer>
             <ButtonsContainer>
-                <Button secondary onClick={onClose}>
+                <SquareCancelButton secondary onClick={onClose}>
                     {t('cancel')}
-                </Button>
-                <Button
+                </SquareCancelButton>
+                <SquareGradientButton
                     primary
                     disabled={checkedRadioValue === swapOptions.slippagePercent}
                     onClick={onSave}
                 >
                     {t('save')}
-                </Button>
+                </SquareGradientButton>
             </ButtonsContainer>
         </>
     );

@@ -21,6 +21,41 @@ import {
 } from '../../state/password';
 import { useIsPasswordSet } from '../../state/wallet';
 import { useIsFullWidthMode } from '../../hooks/useIsFullWidthMode';
+import styled from 'styled-components';
+
+const SettingsBox = styled.div`
+    padding: 16px;
+    box-shadow: 0 4px 8px #449981;
+    border-radius: 40px;
+    background-color: #fff;
+    margin-bottom: 24px;
+`;
+
+const WhiteInnerBody = styled(InnerBody)`
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+`;
+
+const WhiteListItem = styled(ListItem)`
+    background-color: #fff;
+    border-radius: 8px;
+    position: relative;
+
+    &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #e0e0e0;  /* Divider line color */
+    }
+`;
+
+const LabelWithPadding = styled(Label1)`
+  /* Adjust this value to move the text further */
+`;
 
 const LockSwitch = () => {
     const { t } = useTranslation();
@@ -33,12 +68,12 @@ const LockSwitch = () => {
     if (isPasswordSet) {
         return (
             <ListBlock>
-                <ListItem hover={false}>
+                <WhiteListItem hover={false}>
                     <ListItemPayload>
-                        <Label1>{t('Lock_screen')}</Label1>
+                        <LabelWithPadding>{t('Lock_screen')}</LabelWithPadding>
                         <Switch checked={!!data} onChange={toggleLock} />
                     </ListItemPayload>
-                </ListItem>
+                </WhiteListItem>
             </ListBlock>
         );
     } else {
@@ -53,20 +88,18 @@ const TouchIdSwitch = () => {
     const { data: touchIdEnabled } = useTouchIdEnabled();
     const { mutate } = useMutateTouchId();
 
-    console.log(touchIdEnabled);
-
     if (!canPrompt) {
         return null;
     }
 
     return (
         <ListBlock>
-            <ListItem hover={false}>
+            <WhiteListItem hover={false}>
                 <ListItemPayload>
-                    <Label1>{t('biometry_ios_fingerprint')}</Label1>
+                    <LabelWithPadding>{t('biometry_ios_fingerprint')}</LabelWithPadding>
                     <Switch checked={!!touchIdEnabled} onChange={mutate} />
                 </ListItemPayload>
-            </ListItem>
+            </WhiteListItem>
         </ListBlock>
     );
 };
@@ -85,7 +118,7 @@ const ChangePassword = () => {
             }
         ];
         return i;
-    }, []);
+    }, [t]);
 
     if (isPasswordSet) {
         return (
@@ -116,7 +149,7 @@ const ShowPhrases = () => {
             }
         ];
         return i;
-    }, []);
+    }, [navigate, t]);
 
     if (isLedger || isKeystone || isFullWidthMode) {
         return <></>;
@@ -130,12 +163,14 @@ export const SecuritySettings = () => {
     return (
         <>
             <SubHeader title={t('settings_security')} />
-            <InnerBody>
-                <LockSwitch />
-                <TouchIdSwitch />
-                <ChangePassword />
-                <ShowPhrases />
-            </InnerBody>
+            <WhiteInnerBody>
+                <SettingsBox>
+                    <LockSwitch />
+                    <TouchIdSwitch />
+                    <ChangePassword />
+                    <ShowPhrases />
+                </SettingsBox>
+            </WhiteInnerBody>
         </>
     );
 };

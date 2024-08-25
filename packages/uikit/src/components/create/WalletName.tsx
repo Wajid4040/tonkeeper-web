@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from '../../hooks/translation';
 import { CenterContainer } from '../Layout';
 import { Body2, H2 } from '../Text';
-import { Button } from '../fields/Button';
+import { Button as BaseButton } from '../fields/Button';
 import { Input } from '../fields/Input';
 import { EmojisList } from '../shared/emoji/EmojisList';
 import { WalletEmoji } from '../shared/emoji/WalletEmoji';
@@ -18,6 +18,17 @@ const Block = styled.form`
 const Body = styled(Body2)`
     text-align: center;
     color: ${props => props.theme.textSecondary};
+`;
+
+const GradientButton = styled(BaseButton)`
+background: linear-gradient(90deg, #6ddcb2, #388573);
+border: none;
+color: white;
+box-shadow: 0px 8px 20px #c5ffdb;
+&:hover {
+    background: linear-gradient(90deg, #388573, #6ddcb2);
+}
+
 `;
 
 export const UpdateWalletName: FC<{
@@ -68,7 +79,7 @@ export const UpdateWalletName: FC<{
                 />
                 <EmojisList keepShortListForMS={500} onClick={setEmoji} />
 
-                <Button
+                <GradientButton
                     size="large"
                     fullWidth
                     marginTop
@@ -78,7 +89,7 @@ export const UpdateWalletName: FC<{
                     loading={isLoading}
                 >
                     {t('add_edit_favorite_save')}
-                </Button>
+                </GradientButton>
             </Block>
         </CenterContainer>
     );

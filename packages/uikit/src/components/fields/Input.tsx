@@ -85,7 +85,7 @@ export const InputBlock = styled.div<{
 export const InputField = styled.input<{ marginRight?: string; size?: 'small' | 'medium' }>`
     outline: none;
     border: none;
-    background: transparent;
+    background: #FFFFFF;
     flex-grow: 1;
     font-weight: 500;
     font-size: 16px;

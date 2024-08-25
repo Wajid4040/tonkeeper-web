@@ -13,6 +13,7 @@ import { passwordStorage, validatePassword } from '@tonkeeper/core/dist/service/
 import { useIsPasswordSet } from '../../state/wallet';
 import { CreatePassword } from '../../components/create/CreatePassword';
 
+
 const Block = styled.form<{ padding: number }>`
     display: flex;
     flex-direction: column;

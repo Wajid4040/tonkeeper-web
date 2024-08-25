@@ -1,5 +1,6 @@
-import { Button } from '../fields/Button';
-import { shiftedDecimals } from '@tonkeeper/core/dist/utils/balance';
+import { FC } from 'react';
+import styled from 'styled-components';
+import { Button as OriginalButton } from '../fields/Button';
 import {
     useIsSwapFormNotCompleted,
     useMaxSwapValue,
@@ -9,12 +10,31 @@ import {
     useSwapPriceImpact
 } from '../../state/swap/useSwapForm';
 import { useCalculatedSwap } from '../../state/swap/useCalculatedSwap';
-import { FC } from 'react';
 import { useIsActiveWalletLedger } from '../../state/ledger';
 import { useSwapOptions } from '../../state/swap/useSwapOptions';
 import { useTranslation } from '../../hooks/translation';
+import { shiftedDecimals } from '@tonkeeper/core/dist/utils/balance';
 
-export const SwapButton: FC<{ onClick: () => void; isEncodingProcess: boolean }> = ({
+interface SwapButtonProps {
+    onClick: () => void;
+    isEncodingProcess: boolean;
+}
+
+const SquareButton = styled(OriginalButton)`
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    background: linear-gradient(135deg, #ddf2e8 0%, #c4ebd6 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color:black;
+    text-align: center;
+`;
+
+export const SwapButton: FC<SwapButtonProps> = ({
     onClick,
     isEncodingProcess
 }) => {
@@ -33,41 +53,41 @@ export const SwapButton: FC<{ onClick: () => void; isEncodingProcess: boolean }>
 
     if (activeIsLedger) {
         return (
-            <Button size="medium" secondary disabled>
+            <SquareButton size="medium" secondary disabled>
                 {t('swap_ledger_not_supported')}
-            </Button>
+            </SquareButton>
         );
     }
 
     if (isNotCompleted) {
         return (
-            <Button size="medium" secondary disabled>
+            <SquareButton size="medium" secondary disabled>
                 {t('swap_enter_amount')}
-            </Button>
+            </SquareButton>
         );
     }
 
     if (!isFetching && calculatedSwaps?.every(s => !s.trade)) {
         return (
-            <Button size="medium" disabled>
+            <SquareButton size="medium" disabled>
                 {t('swap_trade_is_not_available')}
-            </Button>
+            </SquareButton>
         );
     }
 
     if ((isFetching && !selectedSwap?.trade) || !max || priceImpact === undefined || !swapOptions) {
         return (
-            <Button size="medium" secondary loading={true}>
+            <SquareButton size="medium" secondary loading={true}>
                 {t('continue')}
-            </Button>
+            </SquareButton>
         );
     }
 
     if (!selectedSwap || !selectedSwap.trade) {
         return (
-            <Button size="medium" secondary disabled>
+            <SquareButton size="medium" secondary disabled>
                 {t('swap_trade_is_not_available')}
-            </Button>
+            </SquareButton>
         );
     }
 
@@ -75,24 +95,24 @@ export const SwapButton: FC<{ onClick: () => void; isEncodingProcess: boolean }>
 
     if (isNotEnoughFunds) {
         return (
-            <Button size="medium" secondary disabled>
+            <SquareButton size="medium" secondary disabled>
                 {t('swap_not_enough_funds')}
-            </Button>
+            </SquareButton>
         );
     }
 
     const priceImpactTooHigh = priceImpact?.gt(swapOptions.maxPriceImpact);
     if (priceImpactTooHigh) {
         return (
-            <Button size="medium" secondary disabled>
+            <SquareButton size="medium" secondary disabled>
                 {t('swap_price_impact_too_high')}
-            </Button>
+            </SquareButton>
         );
     }
 
     return (
-        <Button size="medium" primary onClick={onClick} loading={isEncodingProcess}>
+        <SquareButton size="medium" primary onClick={onClick} loading={isEncodingProcess}>
             {t('continue')}
-        </Button>
+        </SquareButton>
     );
 };

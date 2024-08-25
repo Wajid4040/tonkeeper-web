@@ -22,6 +22,7 @@ const NotificationBlock = styled.div`
 const BodyText = styled(Body1)`
     color: ${props => props.theme.textSecondary};
 `;
+
 const TextBlock = styled.div`
     text-align: center;
 `;
@@ -34,6 +35,15 @@ const DisclaimerLink = styled(Label1)`
     cursor: pointer;
     color: ${props => props.theme.textAccent};
     margin-left: 2.35rem;
+`;
+
+const GradientButton = styled(Button)`
+background: linear-gradient(90deg, #6ddcb2, #388573);
+    color: white; /* Assuming you want the text to be white */
+    border: none; /* Remove border if necessary */
+    &:hover {
+        background: linear-gradient(90deg, #388573, #6ddcb2);
+    }
 `;
 
 const DeleteContent: FC<{
@@ -85,7 +95,7 @@ const DeleteContent: FC<{
                 </DisclaimerBlock>
             )}
             {isKeystone && <div style={{ height: 16 }} />}
-            <Button
+            <GradientButton
                 disabled={!checked && !isKeystone}
                 size="large"
                 fullWidth
@@ -94,7 +104,7 @@ const DeleteContent: FC<{
                 type="button"
             >
                 {t('Delete_wallet_data')}
-            </Button>
+            </GradientButton>
         </NotificationBlock>
     );
 };
@@ -160,7 +170,7 @@ const DeleteAllContent: FC<{ onClose: (action: () => void) => void }> = ({ onClo
                     {t('Back_up_now')}
                 </DisclaimerLink>
             </DisclaimerBlock>
-            <Button
+            <GradientButton
                 disabled={!checked}
                 size="large"
                 fullWidth
@@ -169,7 +179,7 @@ const DeleteAllContent: FC<{ onClose: (action: () => void) => void }> = ({ onClo
                 type="button"
             >
                 {t('Delete_wallet_data')}
-            </Button>
+            </GradientButton>
         </NotificationBlock>
     );
 };

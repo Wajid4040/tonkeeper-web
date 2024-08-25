@@ -10,16 +10,19 @@ export const ListItemGrid = styled(ListItemPayload)`
     grid-template-columns: min-content 1fr;
     column-gap: 1rem;
     row-gap: 0.5rem;
-
     align-items: flex-start;
+    background-color: white;  // White background
+    padding: 1rem;  // Optional: Padding for spacing
+    border-radius: 8px;  // Optional: Rounded corners
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  // Optional: Subtle shadow for appearance
+    margin: 0;  // Ensure no extra space on sides
+    width: 100%;  // Ensure the component takes full width
 `;
 
 export const Description = styled.div`
     flex-grow: 1;
-
     display: flex;
     flex-direction: column;
-
     white-space: nowrap;
 `;
 
@@ -70,7 +73,7 @@ export const SecondaryText = styled(Body2)`
 
 const CommentMessage = styled(Body2)`
     padding: 0.5rem 0.75rem;
-    background: ${props => props.theme.backgroundContentTint};
+   
     border-radius: 18px;
     line-break: anywhere;
     display: inline-flex;

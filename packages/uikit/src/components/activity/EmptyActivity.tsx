@@ -32,10 +32,27 @@ const ButtonRow = styled.div`
 const ButtonStyled = styled(Button)`
     display: flex;
     gap: 6px;
+    width: 140px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    white-space: nowrap;
+    padding: 0 12px;
 
     > svg {
         color: ${p => p.theme.buttonTertiaryForeground};
     }
+`;
+
+const BuyButton = styled(ButtonStyled)`
+background: linear-gradient(90deg, #6ddcb2, #388573); /* Buy button gradient */
+`;
+
+const ReceiveButton = styled(ButtonStyled)`
+    background: linear-gradient(45deg, #f05a39, #f9ad6a); /* Receive button gradient */
 `;
 
 const EmptyActivity = () => {
@@ -51,17 +68,17 @@ const EmptyActivity = () => {
             <Label2>{t('activity_empty_transaction_title')}</Label2>
             <BodyText>{t('activity_empty_transaction_caption')}</BodyText>
             <ButtonRow>
-                <ButtonStyled size="small" onClick={() => setOpenBuy(true)}>
+                <BuyButton size="small" onClick={() => setOpenBuy(true)}>
                     <PlusIcon />
                     {t('exchange_title')}
-                </ButtonStyled>
-                <ButtonStyled
+                </BuyButton>
+                <ReceiveButton
                     size="small"
                     onClick={() => sdk.uiEvents.emit('receive', { method: 'receive', params: {} })}
                 >
                     <ArrowDownIcon />
                     {t('wallet_receive')}
-                </ButtonStyled>
+                </ReceiveButton>
             </ButtonRow>
             <BuyNotification buy={buy} open={openBuy} handleClose={() => setOpenBuy(false)} />
         </EmptyBody>

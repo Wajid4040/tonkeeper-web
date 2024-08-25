@@ -45,7 +45,9 @@ export const WorldsGrid = styled.div`
     white-space: normal;
 `;
 
-const World = styled(Body1)``;
+const World = styled(Body1)`
+    // Removed box styling
+`;
 
 export const WorldNumber = styled(Body2)`
     display: inline-block;
@@ -70,6 +72,32 @@ export const ButtonRow = styled.div`
     display: flex;
 `;
 
+const GradientButton = styled(Button)`
+    background: linear-gradient(90deg, #6ddcb2, #388573);
+    border: none;
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+        background: linear-gradient(90deg, #388573, #6ddcb2);
+    }
+
+    &:active {
+        background: linear-gradient(90deg, #368371, #6fdfb3);
+    }
+
+    &:disabled {
+        background: linear-gradient(90deg, #a4f4d5, #a5ccbd);
+        color: white;
+    }
+`;
+
+const CustomBackButtonBlock = styled(BackButtonBlock)`
+    svg {
+        color: white;
+    }
+`;
+
 export const Worlds: FC<{
     mnemonic: string[];
     onBack: () => void;
@@ -86,7 +114,7 @@ export const Worlds: FC<{
 
     return (
         <CenterContainer>
-            <BackButtonBlock onClick={onBack} />
+            <CustomBackButtonBlock onClick={onBack} />
             <Block>
                 <div>
                     <Header>{t('secret_words_title')}</Header>
@@ -102,9 +130,9 @@ export const Worlds: FC<{
                 ))}
             </WorldsGrid>
 
-            <Button size="large" fullWidth primary marginTop onClick={onCheck}>
+            <GradientButton size="large" fullWidth primary marginTop onClick={onCheck}>
                 {t('continue')}
-            </Button>
+            </GradientButton>
         </CenterContainer>
     );
 };
@@ -136,32 +164,32 @@ const InputBlock = styled.label<{
         if (props.submitted) {
             return !props.valid
                 ? css`
-                      border: 1px solid ${props.theme.fieldErrorBorder};
-                      background: ${props.theme.fieldErrorBackground};
+                      border: 1px solid #358171;
+                      background: white;
                   `
                 : props.active
                 ? css`
-                      border: 1px solid ${props.theme.fieldActiveBorder};
-                      background: ${props.theme.fieldBackground};
+                      border: 1px solid #358171;
+                      background: white;
                   `
                 : css`
-                      border: 1px solid ${props.theme.fieldBackground};
-                      background: ${props.theme.fieldBackground};
+                      border: 1px solid #358171;
+                      background: white;
                   `;
         } else {
             return props.active
                 ? css`
-                      border: 1px solid ${props.theme.fieldActiveBorder};
-                      background: ${props.theme.fieldBackground};
+                      border: 1px solid #358171;
+                      background: white;
                   `
                 : !props.valid
                 ? css`
-                      border: 1px solid ${props.theme.fieldErrorBorder};
-                      background: ${props.theme.fieldErrorBackground};
+                      border: 1px solid #358171;
+                      background: white;
                   `
                 : css`
-                      border: 1px solid ${props.theme.fieldBackground};
-                      background: ${props.theme.fieldBackground};
+                      border: 1px solid #358171;
+                      background: white;
                   `;
         }
     }}
@@ -177,6 +205,10 @@ const InputBlock = styled.label<{
         height: 54px;
         line-height: 54px;
         box-sizing: border-box;
+    }
+
+    &:hover {
+        border: 1px solid #358171;
     }
 `;
 
@@ -279,7 +311,7 @@ export const Check: FC<{
 
     return (
         <CenterContainer>
-            <BackButtonBlock onClick={onBack} />
+            <CustomBackButtonBlock onClick={onBack} />
             <Block>
                 <div>
                     <Header>{t('check_words_title')}</Header>
@@ -314,7 +346,7 @@ export const Check: FC<{
                 />
             </Block>
             <Block>
-                <Button
+                <GradientButton
                     tabIndex={4}
                     size="large"
                     fullWidth
@@ -324,7 +356,7 @@ export const Check: FC<{
                     onClick={onConfirm}
                 >
                     {t('continue')}
-                </Button>
+                </GradientButton>
             </Block>
         </CenterContainer>
     );
@@ -435,7 +467,7 @@ export const ImportWords: FC<{
 
     return (
         <>
-            <BackButtonBlock onClick={() => navigate(AppRoute.home)} />
+            <CustomBackButtonBlock onClick={() => navigate(AppRoute.home)} />
             <Block>
                 <div>
                     <Header>{t('import_wallet_title')}</Header>
@@ -458,7 +490,7 @@ export const ImportWords: FC<{
                 </Inputs>
             </Block>
             <Block>
-                <Button
+                <GradientButton
                     size="large"
                     fullWidth
                     primary
@@ -467,7 +499,7 @@ export const ImportWords: FC<{
                     bottom={standalone}
                 >
                     {t('continue')}
-                </Button>
+                </GradientButton>
             </Block>
         </>
     );

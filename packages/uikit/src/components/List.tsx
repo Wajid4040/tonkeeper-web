@@ -83,9 +83,9 @@ export const ListItemPayload = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1rem 1rem 0;
     box-sizing: border-box;
-    gap: 10px;
+
+
 
     width: 100%;
 `;
@@ -98,7 +98,7 @@ export const ListItemElement = styled.div<{
 }>`
     position: relative;
     display: flex;
-    padding: 0 0 0 1rem;
+    
     transition: background-color 0.1s ease;
 
     ${props =>

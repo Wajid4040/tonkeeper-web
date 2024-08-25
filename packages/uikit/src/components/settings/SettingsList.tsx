@@ -7,7 +7,7 @@ export interface SettingsItem {
     name: string;
     secondary?: string;
     action: (item: SettingsItem) => void;
-    icon: React.ReactNode;
+    icon?: React.ReactNode; // Made icon optional
     iconColor?: string;
     preIcon?: React.ReactNode;
 }
@@ -22,7 +22,6 @@ export interface SettingsListProps {
 const Icon = styled(Label1)<{ color?: string }>`
     display: flex;
     margin: -3px 0;
-    color: ${props => props.color ?? props.theme.accentBlue};
 `;
 
 const Secondary = styled(Body1)`
@@ -33,6 +32,23 @@ const Text = styled.span`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+`;
+
+const ListItemStyled = styled(ListItem)<{ isDisabled?: boolean }>`
+    background-color: white; /* Entire ListItem has a white background */
+    padding: 5px; /* Optional: Add padding for content spacing */
+
+    /* Prevent color change on hover */
+    &:hover {
+        background-color: white; /* Ensure background color stays the same on hover */
+    }
+
+    ${p =>
+        p.isDisabled &&
+        css`
+            opacity: 0.6;
+            cursor: not-allowed;
+        `}
 `;
 
 const ListBlockStyled = styled(ListBlock)<{ isDisabled?: boolean }>`
@@ -52,9 +68,9 @@ export const SettingsList: FC<SettingsListProps> = React.memo(
         return (
             <ListBlockStyled isDisabled={isDisabled} className={className}>
                 {items.map(item => (
-                    <ListItem
-                        hover={!isDisabled}
+                    <ListItemStyled
                         key={item.name}
+                        isDisabled={isDisabled}
                         onClick={() => {
                             if (!isDisabled) {
                                 item.action(item);
@@ -64,12 +80,19 @@ export const SettingsList: FC<SettingsListProps> = React.memo(
                         <ListItemPayload>
                             <Text>
                                 {item.preIcon}
-                                <Label1>{item.name}</Label1>
+                                {/* Apply bold styling using strong tag directly */}
+                                <Label1>
+                                    {item.name === 'settings_delete_account' ? (
+                                        <strong>{item.name}</strong>
+                                    ) : (
+                                        item.name
+                                    )}
+                                </Label1>
                                 {item.secondary && <Secondary>{item.secondary}</Secondary>}
                             </Text>
-                            <Icon color={item.iconColor}>{item.icon}</Icon>
+                            {item.icon && <Icon color={item.iconColor}>{item.icon}</Icon>}
                         </ListItemPayload>
-                    </ListItem>
+                    </ListItemStyled>
                 ))}
             </ListBlockStyled>
         );

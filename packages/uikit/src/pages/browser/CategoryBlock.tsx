@@ -3,15 +3,13 @@ import { FC, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ChevronRightIcon } from '../../components/Icon';
-import { ListBlock, ListItem } from '../../components/List';
 import { Body3, H3, Label1, Label2 } from '../../components/Text';
-import { Carousel } from '../../components/shared';
 import { useAppContext } from '../../hooks/appContext';
 import { useOpenLinkOnAreaClick } from '../../hooks/useAreaClick';
 import { useElementSize } from '../../hooks/useElementSize';
 import { BrowserRoute } from '../../libs/routes';
-import { PromotedItem, PromotedItemImage, PromotedItemText } from './PromotedItem';
 
+// Styled components
 const Heading = styled.div`
     display: flex;
     justify-content: space-between;
@@ -23,33 +21,71 @@ const Heading = styled.div`
 const AllButton = styled.button`
     border: none;
     background: transparent;
-    height: fit-content;
-    width: fit-content;
     color: ${props => props.theme.textAccent};
     cursor: pointer;
     padding: 4px 8px;
 `;
 
-const ListContainer = styled.div`
+const Container = styled.div`
     padding-left: 1rem;
     padding-right: 1rem;
 `;
 
-const ListBlockStyled = styled(ListBlock)<{ width: string; marginLeft?: string }>`
-    width: ${props => props.width} !important;
-    margin-left: ${props => props.marginLeft} !important;
+const GroupContainer = styled.div<{ width: string; marginLeft?: string }>`
+    width: ${props => props.width};
+    margin-left: ${props => props.marginLeft};
     margin-bottom: 0;
+    display: flex;
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    gap: 8px;
+`;
+
+const PromotedItem = styled.div`
+    padding: 10px;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: white; /* White background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    border-radius: 10px; /* Rounded corners */
+`;
+
+const PromotedItemImage = styled.img`
+    height: 44px;
+    width: 44px;
+    border-radius: 10px;
+`;
+
+const PromotedItemText = styled.div<{ color?: string }>`
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 11px 12px 13px;
+    color: ${props => props.color || props.theme.textPrimary};
+
+    & > span:nth-child(2) {
+        opacity: 0.78;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-height: 32px;
+    }
 `;
 
 const IconContainerStyled = styled.div`
     margin-left: auto;
-    margin-right: 1rem;
     color: ${props => props.theme.iconTertiary};
     transition: transform 0.15s ease;
 `;
 
-const ListItemStyled = styled(ListItem)`
+const ListItemStyled = styled.div`
+    display: flex;
+    align-items: center;
     padding-left: 1rem;
+    cursor: pointer;
 
     &:hover ${IconContainerStyled} {
         transform: translateX(2px);
@@ -60,8 +96,8 @@ export const CategoryBlock: FC<{ category: PromotionCategory; className?: string
     category,
     className
 }) => {
-    const [containerRef, { width: w }] = useElementSize();
-    const width = w - 36;
+    const [containerRef, { width: containerWidth }] = useElementSize();
+    const width = containerWidth - 36;
     const groups = useMemo(
         () =>
             category.apps.reduce((acc, app, index) => {
@@ -80,45 +116,22 @@ export const CategoryBlock: FC<{ category: PromotionCategory; className?: string
 
     return (
         <div className={className} ref={containerRef}>
-            <Heading>
-                <H3>{category.title}</H3>
-                {canExpand && (
-                    <Link to={'.' + BrowserRoute.category + '/' + category.id}>
-                        <AllButton>
-                            <Label1>All</Label1>
-                        </AllButton>
-                    </Link>
+           
+            <Container>
+                {canExpand ? (
+                    <GroupContainer
+                        width="100%"
+                    >
+                       
+                    </GroupContainer>
+                ) : (
+                    groups.map((group, groupIndex) => (
+                        <Container key={groupsKeys[groupIndex]}>
+                            
+                        </Container>
+                    ))
                 )}
-            </Heading>
-            {canExpand ? (
-                <Carousel gap="8px" infinite={false}>
-                    {groups.map((group, groupIndex) => (
-                        <ListBlockStyled
-                            key={groupsKeys[groupIndex]}
-                            width={
-                                groupIndex === 0 || groupIndex === groups.length - 1
-                                    ? (width - 28).toString() + 'px'
-                                    : 'unset'
-                            }
-                            marginLeft={groupIndex === 0 ? '-34px' : '0'}
-                        >
-                            {group.map(item => (
-                                <CategoryGroupItem key={item.url} item={item} />
-                            ))}
-                        </ListBlockStyled>
-                    ))}
-                </Carousel>
-            ) : (
-                groups.map((group, groupIndex) => (
-                    <ListContainer key={groupsKeys[groupIndex]}>
-                        <ListBlockStyled key={groupsKeys[groupIndex]} width="100%">
-                            {group.map(item => (
-                                <CategoryGroupItem key={item.url} item={item} />
-                            ))}
-                        </ListBlockStyled>
-                    </ListContainer>
-                ))
-            )}
+            </Container>
         </div>
     );
 };
@@ -128,9 +141,9 @@ export const CategoryGroupItem: FC<{ item: PromotedApp }> = ({ item }) => {
     const ref = useOpenLinkOnAreaClick(item.url, 'recommendation', tonendpoint.getTrack());
 
     return (
-        <ListItemStyled key={item.url} ref={ref}>
+        <ListItemStyled ref={ref}>
             <PromotedItem>
-                <PromotedItemImage src={item.icon} />
+                <PromotedItemImage  />
                 <PromotedItemText>
                     <Label2>{item.name}</Label2>
                     <Body3>{item.description}</Body3>
